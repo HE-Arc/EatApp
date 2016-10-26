@@ -1,5 +1,6 @@
 @extends('app')
 
 @section('content')
-    <h1>About me</h1>
+    <h1>Cyril pue la merde</h1>
+
 @stop
