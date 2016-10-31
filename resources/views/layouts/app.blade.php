@@ -21,6 +21,7 @@
     </script>
 </head>
 <body>
+
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -41,8 +42,17 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    &nbsp;
+                <ul class="nav navbar-form navbar-left">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12"/>
+                                <input type="text" class="  search-query form-control" placeholder="Search Recipes" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -77,7 +87,14 @@
         </div>
     </nav>
 
-    @yield('content')
+
+    <div class="container">
+        <div class="row text-center">
+            <h1> {{$titre}} </h1>
+        </div>
+        @yield('content')
+    </div>
+
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
