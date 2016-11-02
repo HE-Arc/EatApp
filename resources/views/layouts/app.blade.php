@@ -12,8 +12,10 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -43,16 +45,17 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-form navbar-left">
+                    <li>
                         <div id="custom-search-input">
                             <div class="input-group col-md-12"/>
-                                <input type="text" class="  search-query form-control" placeholder="Search Recipes" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
+                            <input type="text" class="  search-query form-control" placeholder="Search Recipes" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button">
+                                    <span class=" glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
                         </div>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

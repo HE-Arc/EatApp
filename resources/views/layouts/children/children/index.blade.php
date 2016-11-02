@@ -7,13 +7,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <ul>
-                        <h3> "Ingrédient"</h3>
-                        <h3> "Ingrédient"</h3>
-                        <h3> "Ingrédient"</h3>
+                        <li>
+                            <h3> "Ingrédient"</h3>
+                        </li>
+                        <li>
+                            <h3> "Ingrédient"</h3>
+                        </li>
+                        <li>
+                            <h3> "Ingrédient"</h3>
+                        </li>
                     </ul>
-
-                </div>
-                    </form>
                 </div>
             </div>
         </div>

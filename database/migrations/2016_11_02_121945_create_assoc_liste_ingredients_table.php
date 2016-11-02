@@ -16,6 +16,8 @@ class CreateAssocListeIngredientsTable extends Migration
         Schema::create('assoc_liste_ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('Quantity');
+            $table->string('Unit');
         });
     }
 
