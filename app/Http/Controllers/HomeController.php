@@ -23,10 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $titre = 'Home';
+        return view('home', compact('titre'));
     }
 
-    public function entry() {
-        return view('welcome');
+    public function entry()
+    {
+        $titre = 'Welcome';
+        return view('welcome', compact('titre'));
     }
 }

@@ -11,6 +11,6 @@ class MainController extends Controller
     public function main()
     {
         $titre='Liste personnelle';
-    return view('main.main', compact('titre'));
+        return view('main.main', compact('titre'));
     }
 }

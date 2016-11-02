@@ -13,12 +13,10 @@
                     </ul>
 
                 </div>
-
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-@stop
+@endsection
