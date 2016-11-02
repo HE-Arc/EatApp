@@ -86,12 +86,7 @@
             </div>
         </div>
     </nav>
-
-
     <div class="container">
-        <div class="row text-center">
-            <h1> {{$titre}} </h1>
-        </div>
         @yield('content')
     </div>
 

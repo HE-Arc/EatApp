@@ -23,13 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $titre = 'Home';
-        return view('home', compact('titre'));
+        return view('home');
     }
 
-    public function entry()
+    public function displayMain()
     {
-        $titre = 'Welcome';
-        return view('welcome', compact('titre'));
+        $titre = 'Liste personnelle';
+        return view('layouts.children.children.index', compact('titre'));
     }
 }
