@@ -8,9 +8,9 @@ use App\Http\Requests;
 
 class MainController extends Controller
 {
-    public function main()
+    public function displayMain()
     {
-        $titre='Liste personnelle';
-        return view('main.main', compact('titre'));
+        $titre = 'Liste personnelle';
+        return view('main.index', compact('titre'));
     }
 }

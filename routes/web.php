@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@entry');
 Route::get('/home', 'HomeController@index');
-Route::get('/main', 'MainController@main');
+Route::get('/main', 'MainController@displayMain');
 
 Auth::routes();
 
