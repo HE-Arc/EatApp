@@ -1,5 +1,13 @@
 
 /**TITLE TO CONTENT */
-#input-search-recipes {
-    width: 100px;
+#navbar-full {
+    background-color: #97e198;
 }
+
+.full-width {
+    width: 100%;
+}
+
+.panel-body { padding:0; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0; }
