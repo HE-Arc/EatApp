@@ -16,7 +16,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function displayMain()
+    public function home()
     {
         $titre = 'Liste personnelle';
         return view('layouts.children.children.index', compact('titre'));

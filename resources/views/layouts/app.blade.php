@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="../css/mainCSS.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Scripts -->
@@ -46,15 +46,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-form navbar-left">
                     <li>
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12"/>
-                            <input type="text" class="  search-query form-control" placeholder="Search Recipes" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button">
-                                    <span class=" glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
+                        @yield("custom-navbar")
                     </li>
                 </ul>
 
