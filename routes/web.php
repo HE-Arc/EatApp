@@ -16,5 +16,10 @@ Route::get('/', function() {
 });
 Route::get('/home', 'HomeController@home')->name('home');
 
-Auth::routes();
+Route::resource('list', 'ListeCourseController');
 
+Route::get('/list/{list}/user', 'ListeCourseController@user')->name('list.user.index');
+
+Route::get('/list/{list}/user/{user}', 'ListeCourseController@user')->name('list.user.show');
+
+Auth::routes();

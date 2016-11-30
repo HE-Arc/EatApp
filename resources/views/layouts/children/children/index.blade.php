@@ -145,6 +145,17 @@
         </div>
     </div>
 
+    <div>
+        <ul>
+            <li>
+                <a href="{{ url('/list') }}">Go to Edition de liste</a>
+            </li>
+            <li>
+                <a href="{{ url('/list/1/user') }}">Go to Edition des utilisateurs</a>
+            </li>
+        </ul>
+    </div>
+
 
 
 @endsection
