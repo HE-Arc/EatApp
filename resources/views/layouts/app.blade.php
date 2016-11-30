@@ -11,19 +11,21 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{asset('css/mainCSS.css')}}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/mainCSS.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="{{asset('JS/MainController.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="{{asset('js/MainController.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
 </head>
 <body>
-
+<div id="background-image-opacity"></div>
 <nav id="navbar-full" class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
