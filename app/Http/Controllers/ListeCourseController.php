@@ -15,16 +15,16 @@ class ListeCourseController extends Controller
     public function index()
     {
         $listes = ListeCourse::all();
-        dd($listes);
+       // dd($listes);
 
         $titre = "Edition de liste";
-        return view('layouts.children.children.listEdit',compact('titre'));
+        return view('listeCourse.edit',compact('titre'));
     }
 
     public function user()
     {
         $titre = "Gestion des utilisateurs";
-        return view('layouts.children.children.listUser',compact('titre'));
+        return view('listeCourse.user',compact('titre'));
     }
 
     /**
@@ -68,7 +68,6 @@ class ListeCourseController extends Controller
      */
     public function edit($id)
     {
-        //Récupérer le nom de la liste
         $liste = ListeCourse::find($id);
         return view('listeCourse.edit',compact('liste'));
 

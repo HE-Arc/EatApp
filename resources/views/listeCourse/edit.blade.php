@@ -17,7 +17,7 @@ $titre = "Édition de " . $liste->nom;
         {{ csrf_field() }}
         {{ method_field('PUT') }}
 
-        ...
+
 
         <input type="submit">
     </form>

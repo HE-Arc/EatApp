@@ -193,10 +193,10 @@
     <div>
         <ul>
             <li>
-                <a href="{{ url('/list') }}">Go to Edition de liste</a>
+                <a href="{{ url('/list/1/edit') }}">Go to Edition de liste (test avec liste 1)</a>
             </li>
             <li>
-                <a href="{{ url('/list/1/user') }}">Go to Edition des utilisateurs</a>
+                <a href="{{ url('/list/1/user') }}">Go to Edition des utilisateurs (test avec liste 1)</a>
             </li>
         </ul>
     </div>
