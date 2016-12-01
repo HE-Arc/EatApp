@@ -11,11 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{asset('css/mainCSS.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/MainController.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([

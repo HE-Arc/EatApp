@@ -4,7 +4,7 @@
     <div id="custom-search-input" class="input-group col-md-12">
         <input id="input-search-recipes" type="text" class="search-query form-control" placeholder="Search Recipes" />
         <span class="input-group-btn">
-            <button class="btn steak-btn" type="button">
+            <button class="btn search-btn" type="button">
                 <span class=" glyphicon glyphicon-search"></span>
             </button>
         </span>
