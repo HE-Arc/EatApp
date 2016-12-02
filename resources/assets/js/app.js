@@ -12,9 +12,21 @@ require('./bootstrap');
  * the body of the page. From here, you may begin adding components to
  * the application, or feel free to tweak this setup for your needs.
  */
+<<<<<<< HEAD
 
 //Vue.component('example', require('./components/Example.vue'));
 //
 //const app = new Vue({
 //    el: 'body'
 //});
+=======
+/*
+Vue.component('example', require('./components/Example.vue'));
+
+const app = new Vue({
+    el: 'body'
+});
+*/
+
+require('./MainController')
+>>>>>>> 08bbfa23c9f93a6f7573eb5a17cd5ac9a00ec0d1
