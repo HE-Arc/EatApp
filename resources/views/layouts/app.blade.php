@@ -9,13 +9,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    {{--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--}}
+    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 
     <!-- Styles -->
     <link type="text/css" href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="{{asset('js/MainController.js')}}"></script>
+    <script  type="text/javascript" src="{{asset('js/app.js')}}"></script>
+    <script  type="text/javascript" src="{{asset('js/MainController.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -45,12 +47,6 @@
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-form navbar-left">
-                <li>
-                    @yield("custom-navbar")
-                </li>
-            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -80,6 +76,13 @@
                         </ul>
                     </li>
                 @endif
+            </ul>
+
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-form navbar-right">
+                <li>
+                    @yield("custom-navbar")
+                </li>
             </ul>
         </div>
     </div>

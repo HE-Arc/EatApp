@@ -8,5 +8,6 @@ $(function() {
 });
 
 function m_initUIBehaviours() {
-
+    console.log(window.$);
+    console.log(window.$.fn.button);
 }

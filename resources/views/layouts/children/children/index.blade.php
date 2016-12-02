@@ -4,6 +4,7 @@
 
     <div class="row">
         <div class="panel-group full-width" id="accordion">
+
             @forelse($listesIng as $id => $info)
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -14,7 +15,7 @@
                         </h4>
                     </div>
 
-                    <div id="{{$id}}" class="collapse">
+                    <div id="{{$id}}" class="panel-collapse collapse" aria-expanded="false">
                         <div class="panel-body">
                             <table class="table">
                                 @forelse($info['ingredients'] as $ing)
@@ -24,7 +25,8 @@
                                             <label for="{{$ing['desc']}}_input"> {{$ing['desc']}}</label>
                                         </td>
                                         <td class="ingredient-quantity">
-                                            <input id="{{$ing['desc']}}_input" type="number" min="0" max="1000" class="full-width"
+                                            <input id="{{$ing['desc']}}_input" type="number" min="0" max="1000"
+                                                   class="full-width"
                                                    value="{{$ing['quantity']}}"/>
                                         </td>
                                         <td class="ingredient-unit">
@@ -44,6 +46,8 @@
             @empty
                 <p>CREATE A LIST NO</p>
             @endforelse
+
+
         </div>
     </div>
 
@@ -58,7 +62,5 @@
             </li>
         </ul>
     </div>
-
-
 
 @endsection

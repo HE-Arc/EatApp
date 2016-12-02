@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         $titre = 'Liste personnelle';
         $listesIng = [
-            'Liste_Maison' => [
+            str_slug('Liste_Maison') => [
                 'name' => 'Liste Maison',
                 'ingredients' => [
                     ['desc' => 'Poulet', 'quantity' => 300, 'unit' => 'gr'],
@@ -28,7 +28,7 @@ class HomeController extends Controller
                     ['desc' => 'PQ', 'quantity' => 100, 'unit' => 'rouleaux']
                 ]
             ],
-            'Liste_coloc' => [
+            str_slug('Liste #Coloc') => [
                 'name' => 'Liste #coloc',
                 'ingredients' => [
                     ['desc' => 'Liquide vaisselle', 'quantity' => 1, 'unit' => 'bouteille'],
