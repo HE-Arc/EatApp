@@ -5,18 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    {{--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--}}
+    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{asset('css/mainCSS.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="{{asset('js/MainController.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -40,18 +39,12 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a id="brand" class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-form navbar-left">
-                <li>
-                    @yield("custom-navbar")
-                </li>
-            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -82,6 +75,13 @@
                     </li>
                 @endif
             </ul>
+
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-form navbar-right">
+                <li>
+                    @yield("custom-navbar")
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -91,6 +91,6 @@
 
 
 <!-- Scripts -->
-<script src="/js/app.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
