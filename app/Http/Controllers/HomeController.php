@@ -40,6 +40,6 @@ class HomeController extends Controller
                 'ingredients' => []
             ]
         ];
-        return view('layouts.children.children.index', compact('titre', 'listesIng'));
+        return view('layouts.index', compact('titre', 'listesIng'));
     }
 }

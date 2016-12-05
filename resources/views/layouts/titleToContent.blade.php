@@ -16,7 +16,7 @@
         <div id="list-title">
             {{ $titre }}
         </div>
-        <div id="user-preferences" class="pull-right">
+        <div class="user-preferences pull-right">
             <a class="button-justify" href="{{ url('/list/1/user') }}">{{ Auth::user()->name }}<span class="glyphicon glyphicon-wrench"></span> </a>
         </div>
     </div>

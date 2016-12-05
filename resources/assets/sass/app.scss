@@ -64,7 +64,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-#user-preferences {
+.user-preferences {
   display: inline-block;
   background-color: inherit;
   transition: $button-shading-time;
@@ -106,6 +106,19 @@ body {
   width: 5%;
   min-width: 50px;
   padding: 0 0 0 0;
+}
+
+.create-list-or-ingredient-button {
+  width: 100%;
+  display: block;
+  background-color: inherit;
+  transition: $button-shading-time;
+  border-radius: 5px;
+  text-align: center;
+}
+.create-list-or-ingredient-button:hover {
+  background-color: $accent-color;
+  transition: $button-shading-time;
 }
 
 .button-justify span {

@@ -9,8 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--}}
-    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 
     <!-- Styles -->
     <link type="text/css" href="{{asset('css/app.css')}}" rel="stylesheet">

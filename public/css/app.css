@@ -7732,7 +7732,7 @@ body {
   justify-content: space-between;
 }
 
-#user-preferences {
+.user-preferences {
   display: inline-block;
   background-color: inherit;
   -webkit-transition: 450ms;
@@ -7782,6 +7782,22 @@ body {
   width: 5%;
   min-width: 50px;
   padding: 0 0 0 0;
+}
+
+.create-list-or-ingredient-button {
+  width: 100%;
+  display: block;
+  background-color: inherit;
+  -webkit-transition: 450ms;
+  transition: 450ms;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.create-list-or-ingredient-button:hover {
+  background-color: #8BC34A;
+  -webkit-transition: 450ms;
+  transition: 450ms;
 }
 
 .button-justify span {

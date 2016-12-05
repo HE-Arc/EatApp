@@ -1,4 +1,4 @@
-@extends('layouts.children.titleToContent')
+@extends('layouts.titleToContent')
 
 @section('childContent')
 
@@ -13,8 +13,9 @@
                                 <span class="glyphicon glyphicon-list"></span>
                                 {{$info['name']}}</a>
                         </h4>
-                        <div  class="edit-button pull-right dark-color-hover">
-                            <a href="{{ url('/list/1/edit')}}" class="button-justify"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <div class="edit-button pull-right dark-color-hover">
+                            <a href="{{ url('/list/1/edit')}}" class="button-justify"><span
+                                        class="glyphicon glyphicon-pencil"></span></a>
                         </div>
                     </div>
 
@@ -36,31 +37,45 @@
                                             {{$ing['unit']}}
                                         </td>
                                         <td class="ingredient-delete">
-                                            <a href="#" id="{{$id}}-{{$ing['id']}}_check-button" class="check-button"><span class="glyphicon glyphicon-ok"></span></a>
+                                            <a href="#" id="{{$id}}-{{$ing['id']}}_check-button"
+                                               class="check-button"><span class="glyphicon glyphicon-ok"></span></a>
                                         </td>
                                     </tr>
                                 @empty
-                                    <p>ADD AN INGREDIENT MAYBE</p>
+                                    <tr class="ingredient-uncheck">
+                                        <td class="ingredient-description">
+                                            This list is empty. Change that by adding an ingredient !
+                                            <div class="create-list-or-ingredient-button">
+                                                <a href="{{ url('/list/1/edit')}}" class="button-justify">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforelse
                             </table>
                         </div>
                     </div>
                 </div>
             @empty
-                <p>CREATE A LIST NO</p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            No existing list for now ! Change that by clicking the button below to create one !
+                        </h4>
+                    </div>
+                </div>
             @endforelse
 
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title create-list-or-ingredient-button">
+                        <a href="#" class="button-justify">
+                            <span class="glyphicon glyphicon-plus"></span></a>
+                    </div>
+            </div>
 
         </div>
-    </div>
-
-
-    <div>
-        <ul>
-            <li>
-                <a href="{{ url('/list/1/user') }}">Go to Edition des utilisateurs (test avec liste 1)</a>
-            </li>
-        </ul>
     </div>
 
 @endsection

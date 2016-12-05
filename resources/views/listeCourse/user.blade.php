@@ -1,4 +1,4 @@
-@extends('layouts.children.titleToContent')
+@extends('layouts.titleToContent')
 
 @section('childContent')
 
