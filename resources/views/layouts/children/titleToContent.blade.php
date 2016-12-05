@@ -12,8 +12,13 @@
 @endsection
 
 @section('content')
-    <h1>
-        {{ $titre }}
-    </h1>
+    <div id="list-header-container">
+        <div id="list-title">
+            {{ $titre }}
+        </div>
+        <div id="user-preferences" class="pull-right">
+            <a class="button-justify" href="{{ url('/list/1/user') }}">{{ Auth::user()->name }}<span class="glyphicon glyphicon-wrench"></span> </a>
+        </div>
+    </div>
     @yield('childContent')
 @endsection

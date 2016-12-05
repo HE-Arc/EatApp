@@ -7725,6 +7725,33 @@ body {
   width: 100%;
 }
 
+#list-header-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+#user-preferences {
+  display: inline-block;
+  background-color: inherit;
+  -webkit-transition: 450ms;
+  transition: 450ms;
+  border-radius: 5px;
+}
+
+#user-preferences:hover {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: 450ms;
+  transition: 450ms;
+}
+
+#list-title {
+  text-align: left;
+  font-size: large;
+}
+
 .panel-default > .panel-heading {
   display: -webkit-box;
   display: flex;
@@ -7751,17 +7778,17 @@ body {
   transition: 450ms;
 }
 
-.panel-default > .panel-heading > .edit-button {
+.edit-button {
   width: 5%;
   min-width: 50px;
   padding: 0 0 0 0;
 }
 
-.panel-default > .panel-heading > .edit-button span {
+.button-justify span {
   color: black;
 }
 
-.button-justify, .button-justify:link, .button-justify:visited {
+.button-justify, .button-justify:link, .button-justify:visited, .button-justify:hover {
   height: 100%;
   width: 100%;
   display: block;
