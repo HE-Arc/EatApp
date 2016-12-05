@@ -16,11 +16,6 @@
     <link type="text/css" href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
-<<<<<<< HEAD
-    <script  type="text/javascript" src="{{asset('js/app.js')}}"></script>
-    <script  type="text/javascript" src="{{asset('js/MainController.js')}}"></script>
-=======
->>>>>>> 08bbfa23c9f93a6f7573eb5a17cd5ac9a00ec0d1
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),

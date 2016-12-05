@@ -23,16 +23,16 @@ class HomeController extends Controller
             str_slug('Liste_Maison') => [
                 'name' => 'Liste Maison',
                 'ingredients' => [
-                    ['desc' => 'Poulet', 'quantity' => 300, 'unit' => 'gr'],
-                    ['desc' => 'Poisson', 'quantity' => 2, 'unit' => 'filet'],
-                    ['desc' => 'PQ', 'quantity' => 100, 'unit' => 'rouleaux']
+                    ['id' => 'poulet', 'desc' => 'Poulet', 'quantity' => 300, 'unit' => 'gr'],
+                    ['id' => 'poisson', 'desc' => 'Poisson', 'quantity' => 2, 'unit' => 'filet'],
+                    ['id' => 'papier-menage', 'desc' => 'Papier ménage', 'quantity' => 12, 'unit' => 'rouleau']
                 ]
             ],
             str_slug('Liste #Coloc') => [
                 'name' => 'Liste #coloc',
                 'ingredients' => [
-                    ['desc' => 'Liquide vaisselle', 'quantity' => 1, 'unit' => 'bouteille'],
-                    ['desc' => 'Bière', 'quantity' => 20, 'unit' => 'l']
+                    ['id' => 'liquide-vaiselle', 'desc' => 'Liquide vaisselle', 'quantity' => 1, 'unit' => 'bouteille'],
+                    ['id' => 'biere', 'desc' => 'Bière', 'quantity' => 20, 'unit' => 'l']
                 ]
             ],
             'Liste_nulle' => [

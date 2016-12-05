@@ -96,6 +96,15 @@ body {
   text-align: right;
 }
 
+.ingredient-check {
+  opacity: 0.3;
+  transition: 225ms;
+}
+.ingredient-uncheck {
+  opacity: 1.0;
+  transition: 225ms;
+}
+
 .panel-body { padding:0; }
 .panel-body table tr td {
   padding: 5px 10px 5px 10px;

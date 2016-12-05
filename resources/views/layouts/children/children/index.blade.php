@@ -19,7 +19,7 @@
                         <div class="panel-body">
                             <table class="table">
                                 @forelse($info['ingredients'] as $ing)
-                                    <tr>
+                                    <tr id="{{$id}}-{{$ing['id']}}_list" class="ingredient-uncheck">
                                         <td class="ingredient-description">
                                             <span class="glyphicon glyphicon-apple text-primary"></span>
                                             <label for="{{$ing['desc']}}_input"> {{$ing['desc']}}</label>
@@ -33,7 +33,7 @@
                                             {{$ing['unit']}}
                                         </td>
                                         <td class="ingredient-delete">
-                                            <span class="glyphicon glyphicon-trash text-danger"></span>
+                                            <a href="#" id="{{$id}}-{{$ing['id']}}_check-button" class="check-button"><span class="glyphicon glyphicon-ok"></span></a>
                                         </td>
                                     </tr>
                                 @empty

@@ -1,7 +1,7 @@
 /**
  * Created by alexandre on 29.11.2016.
  */
-var $ = require('jquery')
+var $ = require('jquery');
 
 $(function() {
     console.log("Launching front-end scripts...");
@@ -9,6 +9,9 @@ $(function() {
 });
 
 function m_initUIBehaviours() {
-    console.log(window.$);
-    console.log(window.$.fn.button);
+    $('.check-button').click(function(e) {
+        var objectToTag = '#' + e.currentTarget.id.split("_")[0] + "_list";
+        $(objectToTag).toggleClass('ingredient-uncheck');
+        $(objectToTag).toggleClass('ingredient-check');
+    });
 }
