@@ -13,6 +13,7 @@
                                 <span class="glyphicon glyphicon-list"></span>
                                 {{$info['name']}}</a>
                         </h4>
+                        <a href="{{ url('/list/1/edit')}}" class="edit-button pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                     </div>
 
                     <div id="{{$id}}" class="panel-collapse collapse" aria-expanded="false">
@@ -54,9 +55,6 @@
 
     <div>
         <ul>
-            <li>
-                <a href="{{ url('/list/1/edit') }}">Go to Edition de liste (test avec liste 1)</a>
-            </li>
             <li>
                 <a href="{{ url('/list/1/user') }}">Go to Edition des utilisateurs (test avec liste 1)</a>
             </li>
