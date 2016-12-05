@@ -8,12 +8,14 @@
             @forelse($listesIng as $id => $info)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">
+                        <h4 class="panel-title dark-color-hover">
                             <a data-toggle="collapse" data-parent="#accordion" href="#{{$id}}" class="button-justify">
                                 <span class="glyphicon glyphicon-list"></span>
                                 {{$info['name']}}</a>
                         </h4>
-                        <a href="{{ url('/list/1/edit')}}" class="edit-button pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <div  class="edit-button pull-right dark-color-hover">
+                            <a href="{{ url('/list/1/edit')}}" class="button-justify"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </div>
                     </div>
 
                     <div id="{{$id}}" class="panel-collapse collapse" aria-expanded="false">

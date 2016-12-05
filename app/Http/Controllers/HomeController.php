@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $titre = 'Liste personnelle';
+        $titre = 'Mes listes';
         $listesIng = [
             str_slug('Liste_Maison') => [
                 'name' => 'Liste Maison',
