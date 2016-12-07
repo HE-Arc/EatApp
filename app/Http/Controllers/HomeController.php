@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ListeCourse;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,6 +20,7 @@ class HomeController extends Controller
     public function home()
     {
         $titre = 'Mes listes';
+//        $allListes = ListeCourse::all();
         $listesIng = [
             str_slug('Liste_Maison') => [
                 'name' => 'Liste Maison',

@@ -70,7 +70,6 @@ class ListeCourseController extends Controller
     {
         $liste = ListeCourse::find($id);
         return view('listeCourse.edit',compact('liste'));
-
     }
 
     /**
@@ -93,6 +92,6 @@ class ListeCourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //ok.
     }
 }

@@ -16,9 +16,6 @@ $titre = "Édition de " . $liste->nom;
     <form method="POST" action="{{ route("list.update", ["list" => $liste]) }}">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
-
-
-
         <input type="submit">
     </form>
 
