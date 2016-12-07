@@ -11,9 +11,7 @@ class ListeCourse extends Model
 
     public function store(Request $request)
     {
-        $listeCourse = new ListeCourse();
-        $listeCourse->nom = $request->nom;
-        $listeCourse->save();
+        self::create($request->only('nom'));
     }
 
     public function updateListeCourse($id,$nom)

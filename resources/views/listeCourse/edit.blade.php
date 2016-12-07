@@ -2,6 +2,7 @@
 
 <?php
 $titre = "Édition de " . $liste->nom;
+
 ?>
 
 @section('childContent')
