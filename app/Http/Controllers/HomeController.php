@@ -25,19 +25,19 @@ class HomeController extends Controller
             str_slug('Liste_Maison') => [
                 'name' => 'Liste Maison',
                 'ingredients' => [
-                    ['id' => 'poulet', 'desc' => 'Poulet', 'quantity' => 300, 'unit' => 'gr'],
-                    ['id' => 'poisson', 'desc' => 'Poisson', 'quantity' => 2, 'unit' => 'filet'],
-                    ['id' => 'papier-menage', 'desc' => 'Papier ménage', 'quantity' => 12, 'unit' => 'rouleau']
+                    ['id' => str_slug('Poulet'), 'desc' => 'Poulet', 'quantity' => 300, 'unit' => 'gr'],
+                    ['id' => str_slug('Poisson'), 'desc' => 'Poisson', 'quantity' => 2, 'unit' => 'filet'],
+                    ['id' => str_slug('Papier ménage'), 'desc' => 'Papier ménage', 'quantity' => 12, 'unit' => 'rouleau']
                 ]
             ],
             str_slug('Liste #Coloc') => [
                 'name' => 'Liste #coloc',
                 'ingredients' => [
-                    ['id' => 'liquide-vaiselle', 'desc' => 'Liquide vaisselle', 'quantity' => 1, 'unit' => 'bouteille'],
-                    ['id' => 'biere', 'desc' => 'Bière', 'quantity' => 20, 'unit' => 'l']
+                    ['id' => str_slug('Liquide vaiselle'), 'desc' => 'Liquide vaisselle', 'quantity' => 1, 'unit' => 'bouteille'],
+                    ['id' => str_slug('Bière'), 'desc' => 'Bière', 'quantity' => 20, 'unit' => 'l']
                 ]
             ],
-            'Liste_nulle' => [
+            str_slug('Liste nulle') => [
                 'name' => 'Liste nulle',
                 'ingredients' => []
             ]

@@ -69,6 +69,7 @@ class ListeCourseController extends Controller
     public function edit($id)
     {
         $liste = ListeCourse::find($id);
+        //Get ingredients from assoc table with this id
         return view('listeCourse.edit',compact('liste'));
     }
 
@@ -92,6 +93,6 @@ class ListeCourseController extends Controller
      */
     public function destroy($id)
     {
-        //ok.
+        //
     }
 }

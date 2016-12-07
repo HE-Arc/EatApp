@@ -1,7 +1,6 @@
 /**
  * Created by alexandre on 29.11.2016.
  */
-var $ = require('jquery');
 
 $(function() {
     console.log("Launching front-end scripts...");

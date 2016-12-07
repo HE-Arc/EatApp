@@ -17,6 +17,10 @@
                             <a href="{{ url('/list/1/edit')}}" class="button-justify"><span
                                         class="glyphicon glyphicon-pencil"></span></a>
                         </div>
+                        <div class="edit-button pull-right dark-color-hover">
+                            <a href="{{ url('/list/1/user') }}" class="button-justify"><span
+                                        class="glyphicon glyphicon-user"></span></a>
+                        </div>
                     </div>
 
                     <div id="{{$id}}" class="panel-collapse collapse" aria-expanded="false">
@@ -38,7 +42,8 @@
                                         </td>
                                         <td class="ingredient-delete">
                                             <a href="#" id="{{$id}}-{{$ing['id']}}_check-button"
-                                               class="check-button"><span class="glyphicon glyphicon-ok"></span></a>
+                                               class="check-button"><span class="glyphicon glyphicon-ok"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                 @empty

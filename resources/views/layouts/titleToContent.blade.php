@@ -16,9 +16,6 @@
         <div id="list-title">
             {{ $titre }}
         </div>
-        <div class="user-preferences pull-right">
-            <a class="button-justify" href="{{ url('/list/1/user') }}">{{ Auth::user()->name }}<span class="glyphicon glyphicon-wrench"></span> </a>
-        </div>
     </div>
     @yield('childContent')
 @endsection

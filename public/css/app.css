@@ -7748,6 +7748,7 @@ body {
 }
 
 #list-title {
+  width: 100%;
   text-align: left;
   font-size: large;
 }
