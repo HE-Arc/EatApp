@@ -18,6 +18,18 @@ class CreateAssocListeIngredientsTable extends Migration
             $table->timestamps();
             $table->integer('Quantity');
             $table->string('Unit');
+
+            //Clé étrangère sur la liste
+            $table->integer('liste_id')->unsigned();
+            $table->foreign('liste_id')
+                ->references('id')
+                ->on('liste_courses');
+
+            //Clé étrangère sur l'ingredient
+            $table->integer('ingredient_id')->unsigned();
+            $table->foreign('ingredient_id')
+                ->references('id')
+                ->on('ingredients');
         });
     }
 

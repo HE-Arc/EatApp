@@ -21,4 +21,5 @@ class ListeCourse extends Model
         $listeCourse->save();
     }
 
+
 }
