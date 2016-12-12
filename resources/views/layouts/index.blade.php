@@ -14,11 +14,11 @@
                                 {{$info['nom']}}</a>
                         </h4>
                         <div class="edit-button pull-right dark-color-hover">
-                            <a href="{{ url('/list/1/edit')}}" class="button-justify"><span
+                            <a href="{{ url('/list/' . $info["id"] . '/edit')}}" class="button-justify"><span
                                         class="glyphicon glyphicon-pencil"></span></a>
                         </div>
                         <div class="edit-button pull-right dark-color-hover">
-                            <a href="{{ url('/list/1/user') }}" class="button-justify"><span
+                            <a href="{{ url('/list/' . $info["id"] . '/user') }}" class="button-justify"><span
                                         class="glyphicon glyphicon-user"></span></a>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                             </label>
                                         </td>
                                         <td class="ingredient-quantity">
-                                            <input id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number" min="0" max="1000"
+                                            <input disabled id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number" min="0" max="1000"
                                                    class="full-width"
                                                    value="{{$ing['Quantity']}}"/>
                                         </td>
