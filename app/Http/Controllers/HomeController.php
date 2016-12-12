@@ -23,29 +23,23 @@ class HomeController extends Controller
     {
         $titre = 'Mes listes';
         $allListes = ListeCourse::all();
-        $assoc = ListesIngredients::all();
-        $allIng = Ingredient::all();
         $listTab = [];
-        $ingTab = [];
 
-        foreach($allListes as $list){
-            $attr = $list->getAttributes();
-            $attr["slug"] = str_slug($attr["nom"]);
-            $listTab[$attr["id"]] = $attr;
-            $listTab[$attr["id"]]["ingredients"] = [];
-        }
+        foreach($allListes as $list) {
+            $l = [
+                'ingredients' => [],
+                'slug' => str_slug($list->nom),
+                'name' => $list->nom
+            ];
+            foreach($list->ingredients as $ing) {
+                $attr = $ing->pivot;
+                $ingredient = Ingredient::find($attr->ingredient_id)['attributes'];
+                $ingredient['slug'] = str_slug($ingredient['IngredientName']);
+                $ingredient['Quantity'] = $attr->Quantity;
 
-        foreach($allIng as $ing) {
-            $attr = $ing->getAttributes();
-            $attr["slug"] = str_slug($attr["IngredientName"]);
-            $ingTab[$attr['id']] = $attr;
-        }
-
-        foreach($assoc as $list){
-            $attr = $list->getAttributes();
-            $ing = $ingTab[$attr["ingredient_id"]];
-            $ing["Quantity"] = $attr["Quantity"];
-            $listTab[$attr["liste_id"]]["ingredients"][$attr["ingredient_id"]] = $ing;
+                $l['ingredients'][$attr->ingredient_id] = $ingredient;
+            }
+            $listTab[$list->id] = $l;
         }
 
         return view('layouts.index', compact('titre', 'listTab'));

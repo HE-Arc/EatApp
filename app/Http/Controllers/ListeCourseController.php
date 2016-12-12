@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ingredient;
 use App\ListeCourse;
 use App\ListesIngredients;
 use Illuminate\Http\Request;
@@ -70,7 +71,10 @@ class ListeCourseController extends Controller
     public function edit($id)
     {
         $liste = ListeCourse::find($id);
-        $assoc = ListesIngredients::all();
+        $assoc = ListesIngredients::where('id', $id)
+            ->get();
+        $allIng = Ingredient::where('id', $id)
+            ->get();
         dd($assoc);
         //Get ingredients from assoc table with this id
         return view('listeCourse.edit',compact('liste'));

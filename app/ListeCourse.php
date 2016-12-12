@@ -21,5 +21,10 @@ class ListeCourse extends Model
         $listeCourse->save();
     }
 
+    public function ingredients()
+    {
+        return $this->belongsToMany('App\Ingredient', 'assoc_liste_ingredients', 'liste_id', 'ingredient_id')
+            ->withPivot('Quantity');
+    }
 
 }
