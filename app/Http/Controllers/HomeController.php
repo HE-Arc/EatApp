@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Ingredient;
 use App\ListeCourse;
+use App\ListesIngredients;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,28 +22,32 @@ class HomeController extends Controller
     public function home()
     {
         $titre = 'Mes listes';
-//        $allListes = ListeCourse::all();
-        $listesIng = [
-            str_slug('Liste_Maison') => [
-                'name' => 'Liste Maison',
-                'ingredients' => [
-                    ['id' => str_slug('Poulet'), 'desc' => 'Poulet', 'quantity' => 300, 'unit' => 'gr'],
-                    ['id' => str_slug('Poisson'), 'desc' => 'Poisson', 'quantity' => 2, 'unit' => 'filet'],
-                    ['id' => str_slug('Papier ménage'), 'desc' => 'Papier ménage', 'quantity' => 12, 'unit' => 'rouleau']
-                ]
-            ],
-            str_slug('Liste #Coloc') => [
-                'name' => 'Liste #coloc',
-                'ingredients' => [
-                    ['id' => str_slug('Liquide vaiselle'), 'desc' => 'Liquide vaisselle', 'quantity' => 1, 'unit' => 'bouteille'],
-                    ['id' => str_slug('Bière'), 'desc' => 'Bière', 'quantity' => 20, 'unit' => 'l']
-                ]
-            ],
-            str_slug('Liste nulle') => [
-                'name' => 'Liste nulle',
-                'ingredients' => []
-            ]
-        ];
-        return view('layouts.index', compact('titre', 'listesIng'));
+        $allListes = ListeCourse::all();
+        $assoc = ListesIngredients::all();
+        $allIng = Ingredient::all();
+        $listTab = [];
+        $ingTab = [];
+
+        foreach($allListes as $list){
+            $attr = $list->getAttributes();
+            $attr["slug"] = str_slug($attr["nom"]);
+            $listTab[$attr["id"]] = $attr;
+            $listTab[$attr["id"]]["ingredients"] = [];
+        }
+
+        foreach($allIng as $ing) {
+            $attr = $ing->getAttributes();
+            $attr["slug"] = str_slug($attr["IngredientName"]);
+            $ingTab[$attr['id']] = $attr;
+        }
+
+        foreach($assoc as $list){
+            $attr = $list->getAttributes();
+            $ing = $ingTab[$attr["ingredient_id"]];
+            $ing["Quantity"] = $attr["Quantity"];
+            $listTab[$attr["liste_id"]]["ingredients"][$attr["ingredient_id"]] = $ing;
+        }
+
+        return view('layouts.index', compact('titre', 'listTab'));
     }
 }

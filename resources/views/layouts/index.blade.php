@@ -5,13 +5,13 @@
     <div class="row">
         <div class="panel-group full-width" id="accordion">
 
-            @forelse($listesIng as $id => $info)
+            @forelse($listTab as $info)
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title dark-color-hover">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#{{$id}}" class="button-justify">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#{{$info['slug']}}" class="button-justify">
                                 <span class="glyphicon glyphicon-list"></span>
-                                {{$info['name']}}</a>
+                                {{$info['nom']}}</a>
                         </h4>
                         <div class="edit-button pull-right dark-color-hover">
                             <a href="{{ url('/list/1/edit')}}" class="button-justify"><span
@@ -23,25 +23,27 @@
                         </div>
                     </div>
 
-                    <div id="{{$id}}" class="panel-collapse collapse" aria-expanded="false">
+                    <div id="{{$info['slug']}}" class="panel-collapse collapse" aria-expanded="false">
                         <div class="panel-body">
                             <table class="table">
                                 @forelse($info['ingredients'] as $ing)
-                                    <tr id="{{$id}}-{{$ing['id']}}_list" class="ingredient-uncheck">
+                                    <tr id="{{$info['slug']}}-{{$ing['slug']}}_list" class="ingredient-uncheck">
                                         <td class="ingredient-description">
                                             <span class="glyphicon glyphicon-apple text-primary"></span>
-                                            <label for="{{$ing['desc']}}_input"> {{$ing['desc']}}</label>
+                                            <label for="{{$info['slug']}}-{{$ing['slug']}}_input">
+                                                {{$ing['IngredientName']}}
+                                            </label>
                                         </td>
                                         <td class="ingredient-quantity">
-                                            <input id="{{$ing['desc']}}_input" type="number" min="0" max="1000"
+                                            <input id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number" min="0" max="1000"
                                                    class="full-width"
-                                                   value="{{$ing['quantity']}}"/>
+                                                   value="{{$ing['Quantity']}}"/>
                                         </td>
                                         <td class="ingredient-unit">
-                                            {{$ing['unit']}}
+                                            {{$ing['MetricUnit']}}
                                         </td>
                                         <td class="ingredient-delete">
-                                            <a href="#" id="{{$id}}-{{$ing['id']}}_check-button"
+                                            <a href="#" id="{{$info['slug']}}-{{$ing['slug']}}_check-button"
                                                class="check-button"><span class="glyphicon glyphicon-ok"></span>
                                             </a>
                                         </td>
