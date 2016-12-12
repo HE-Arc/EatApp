@@ -53,7 +53,7 @@
                                         <td class="ingredient-description">
                                             This list is empty. Change that by adding an ingredient !
                                             <div class="create-list-or-ingredient-button">
-                                                <a href="{{ url('/list/1/edit')}}" class="button-justify">
+                                                <a href="{{ url('/list/' . $id . '/edit')}}" class="button-justify">
                                                     <span class="glyphicon glyphicon-pencil"></span>
                                                 </a>
                                             </div>

@@ -70,13 +70,24 @@ class ListeCourseController extends Controller
      */
     public function edit($id)
     {
-        $liste = ListeCourse::find($id);
-        $assoc = ListesIngredients::where('id', $id)
-            ->get();
-        $allIng = Ingredient::where('id', $id)
-            ->get();
-        dd($assoc);
-        //Get ingredients from assoc table with this id
+        $list = ListeCourse::find($id);
+
+        $liste = [
+            'ingredients' => [],
+            'slug' => str_slug($list->nom),
+            'name' => $list->nom
+        ];
+        foreach($list->ingredients as $ing) {
+            $attr = $ing->pivot;
+            $ingredient = Ingredient::find($attr->ingredient_id)['attributes'];
+            $ingredient['slug'] = str_slug($ingredient['IngredientName']);
+            $ingredient['Quantity'] = $attr->Quantity;
+
+            $liste['ingredients'][$attr->ingredient_id] = $ingredient;
+        }
+
+//        dd($liste);
+
         return view('listeCourse.edit',compact('liste'));
     }
 
