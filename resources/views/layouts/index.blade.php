@@ -77,7 +77,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title create-list-or-ingredient-button">
-                        <a href="#" class="button-justify">
+                        <a href="{{url('/list/create')}}" class="button-justify">
                             <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
             </div>

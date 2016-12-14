@@ -37,6 +37,8 @@ class ListeCourseController extends Controller
     public function create()
     {
         //
+        $titre = "Ajout d'une liste";
+        return view('listeCourse.create', compact('titre'));
     }
 
     /**
@@ -47,7 +49,11 @@ class ListeCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $liste = $request->all();
+        ListeCourse::create($liste);
+        return redirect()->back();
+
     }
 
     /**
