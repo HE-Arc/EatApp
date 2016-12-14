@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Ingredient;
 use App\ListeCourse;
 use App\ListesIngredients;
@@ -50,9 +51,17 @@ class ListeCourseController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        $this->validate($request, [
+            'nom' => 'required'
+        ]);
+
         $liste = $request->all();
+
         ListeCourse::create($liste);
+
+        Session::flash('flash_message', 'Liste ajouté avec succès!');
         return redirect()->back();
+        //return redirect()->route('home');
 
     }
 
@@ -81,7 +90,8 @@ class ListeCourseController extends Controller
         $liste = [
             'ingredients' => [],
             'slug' => str_slug($list->nom),
-            'name' => $list->nom
+            'name' => $list->nom,
+            'id' => $id
         ];
         foreach($list->ingredients as $ing) {
             $attr = $ing->pivot;
@@ -106,7 +116,16 @@ class ListeCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        //dd($request->all());
+        $liste = ListeCourse::findOrFail($id);
+        $this->validate($request, [
+            'nom' => 'required'
+        ]);
+
+        $input = $request->all();
+        $liste->fill($input)->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -118,5 +137,9 @@ class ListeCourseController extends Controller
     public function destroy($id)
     {
         //
+        $liste = ListeCourse::findOrFail($id);
+        $liste->delete();
+
+        return redirect()->route('home');
     }
 }

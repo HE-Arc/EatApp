@@ -21,13 +21,15 @@ class CreateAssocUserListeTable extends Migration
             $table->integer('liste_id')->unsigned();
             $table->foreign('liste_id')
                 ->references('id')
-                ->on('liste_courses');
+                ->on('liste_courses')
+                ->onDelete('cascade');;
 
             //Clé étrangère sur l'user
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
 
         });
     }

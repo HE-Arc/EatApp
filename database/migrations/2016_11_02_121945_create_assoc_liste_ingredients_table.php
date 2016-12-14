@@ -23,13 +23,15 @@ class CreateAssocListeIngredientsTable extends Migration
             $table->integer('liste_id')->unsigned();
             $table->foreign('liste_id')
                 ->references('id')
-                ->on('liste_courses');
+                ->on('liste_courses')
+                ->onDelete('cascade');;
 
             //Clé étrangère sur l'ingredient
             $table->integer('ingredient_id')->unsigned();
             $table->foreign('ingredient_id')
                 ->references('id')
-                ->on('ingredients');
+                ->on('ingredients')
+                ->onDelete('cascade');
         });
     }
 

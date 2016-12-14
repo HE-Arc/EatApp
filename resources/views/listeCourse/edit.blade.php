@@ -67,6 +67,26 @@ $titre = "Édition de " . $liste['name'];
         <a href="{{ url('/home') }}">Go back to home</a>
     </div>
 
+    {!! Form::model($liste,[
+       'method' => 'PATCH',
+       'route' => ['list.update',$liste['id']]
+    ]) !!}
+    <div class="form-group">
+        {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
+        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+    </div>
+    {!! Form::submit('Modifier la liste') !!}
+    {!! Form::close() !!}
+
+
+    {!! Form::open([
+        'method' => 'DELETE',
+        'route' => ['list.destroy',$liste['id']]
+    ]) !!}
+
+    {!! Form::submit('Supprimer cette liste ?') !!}
+    {!! Form::close() !!}
+
     {{--<form method="POST" action="{{ route("list.update", ["list" => $liste]) }}">--}}
     {{--{{ csrf_field() }}--}}
     {{--{{ method_field('PUT') }}--}}
