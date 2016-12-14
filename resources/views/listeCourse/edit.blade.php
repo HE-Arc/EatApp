@@ -31,7 +31,7 @@ $titre = "Édition de " . $liste['name'];
                                         </label>
                                     </td>
                                     <td class="ingredient-quantity">
-                                        <input disabled id="{{$ing['slug']}}_input" type="number"
+                                        <input id="{{$ing['slug']}}_input" type="number"
                                                min="0" max="1000"
                                                class="full-width"
                                                value="{{$ing['Quantity']}}"/>
