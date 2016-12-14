@@ -40,6 +40,18 @@ $titre = "Édition de " . $liste['name'];
                                         {{$ing['MetricUnit']}}
                                     </td>
                                     <td class="ingredient-delete">
+                                        <!-- C'est vraiment dégueu ! -->
+                                        <p style="display: none">
+
+                                            {{$LI = \App\ListesIngredients::where('liste_id',$liste['id'])->where('ingredient_id',$ing['id'])->select('id')->get()}}
+                                        </p>
+                                        {!! Form::open([
+                                           'method' => 'DELETE',
+                                           'route' => ['listsIngredients.destroy',$LI[0]['id']]
+                                         ]) !!}
+
+                                        {!! Form::submit($LI[0]['id'], ['class' => 'glyphicon glyphicon-trash']) !!}
+                                        {!! Form::close() !!}
                                         <a href="#" id="{{$ing['slug']}}_check-button"
                                            class="check-button"><span class="glyphicon glyphicon-trash"></span>
                                         </a>

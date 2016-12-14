@@ -59,7 +59,7 @@ class ListeCourseController extends Controller
 
         ListeCourse::create($liste);
 
-        Session::flash('flash_message', 'Liste ajouté avec succès!');
+       // Session::flash('flash_message', 'Liste ajouté avec succès!');
         return redirect()->back();
         //return redirect()->route('home');
 
@@ -98,7 +98,7 @@ class ListeCourseController extends Controller
             $ingredient = Ingredient::find($attr->ingredient_id)['attributes'];
             $ingredient['slug'] = str_slug($ingredient['IngredientName']);
             $ingredient['Quantity'] = $attr->Quantity;
-
+            $ingredient['id'] = $attr->ingredient_id;
             $liste['ingredients'][$attr->ingredient_id] = $ingredient;
         }
 
