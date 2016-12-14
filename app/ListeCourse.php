@@ -8,6 +8,7 @@ class ListeCourse extends Model
 {
     //
     protected $table = 'liste_courses';
+    protected $fillable = ['nom'];
 
     public function store(Request $request)
     {
