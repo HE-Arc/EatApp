@@ -95,47 +95,18 @@
             </div>
         </div>
     </div>
+@endsection
 
     <!-- MODALS -->
-    <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">Add an ingredient</h4>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        {!! Form::open(['route' => 'list.store']) !!}
-                        <div>
-                            {!! Form::label('nom', 'Nom de la liste:') !!}
-                            {!! Form::text('nom', null) !!}
-                        </div>
-                        {!! Form::submit('Créer une nouvelle liste',
-                            array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    @if(Session::has('flash_message'))
-                        <div class="alert alert-success">
-                            {{ Session::get('flash_message') }}
-                        </div>
-                    @endif
-
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                <p>{{ $error }}</p>
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
-            </div>
+@section('modal-content')
+    <div>
+        {!! Form::open(['route' => 'list.store']) !!}
+        <div>
+            {!! Form::label('nom', 'Nom de la liste:') !!}
+            {!! Form::text('nom', null) !!}
         </div>
+        {!! Form::submit('Créer une nouvelle liste',
+            array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
+        {!! Form::close() !!}
     </div>
-
 @endsection

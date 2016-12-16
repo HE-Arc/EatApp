@@ -12,7 +12,7 @@ $titre = "Édition de " . $liste['name'];
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title dark-color-hover">
-                        <a data-parent="#accordion" class="button-justify">
+                        <a data-parent="#accordion" class="button-justify open-modal-name">
                             <span class="glyphicon glyphicon-list"></span>
                             {{$liste['name']}}
                         </a>
@@ -78,48 +78,62 @@ $titre = "Édition de " . $liste['name'];
         <a href="{{ url('/home') }}">Go back to home</a>
     </div>
 
-    {!! Form::model($liste,[
-       'method' => 'PATCH',
-       'route' => ['list.update',$liste['id']]
-    ]) !!}
-    <div class="form-group">
-        {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
-        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
-    </div>
-    {!! Form::submit('Modifier la liste') !!}
-    {!! Form::close() !!}
-
     <!-- MODALS -->
-    <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">Add an ingredient</h4>
+@section('modal-content')
+    <div>{!! Form::open(['route' => 'listsIngredients.store']) !!}
+        <div class="form-group">
+            {!! Form::label('Ingredient', 'Ingredient:', ['class' => 'control-label']) !!}
+            {!! Form::select('Ingredient', ["Banana" => "BANANANA"], ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('Quantity', 'Quantity:', ['class' => 'control-label']) !!}
+            {!! Form::text('Quantity', null, ['class' => 'form-control']) !!}
+        </div>
+        {!! Form::submit('Add Ingredient',
+                array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
+        {!! Form::close() !!}</div>
+@endsection
+
+<div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Change name</h4>
+            </div>
+            <div class="modal-body">
+                {!! Form::model($liste,[
+                   'method' => 'PATCH',
+                   'route' => ['list.update',$liste['id']]
+                ]) !!}
+                <div class="form-group">
+                    {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
+                    {!! Form::text('nom', null, ['class' => 'form-control']) !!}
                 </div>
-                <div class="modal-body">
-                    <form id="new-file-form">
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <label for="modal-new-file-name" class="form-control-label">File Name:</label>
-                                <input type="text" class="form-control" id="modal-new-file-name">
-                            </div>
-                            <button type="button" id="modal-new-file-save" class="btn btn-primary form-group pull-right"
-                                    data-dismiss="modal">
-                                Save changes
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <p id="modal-new-file-error" class="modal-error">
-                    </p>
-                </div>
+                {!! Form::submit('Apply new name',
+                        array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+                @if(Session::has('flash_message'))
+                    <div class="alert alert-success">
+                        {{ Session::get('flash_message') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>
+</div>
 
 @endsection

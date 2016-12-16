@@ -27,7 +27,6 @@ function m_initUIBehaviours() {
             $(list).toggleClass('object-delete-failed');
 
             var url = $('#' + e.currentTarget.id).closest('form').attr('action');
-            console.log(url);
             $.ajax(url, {type: 'delete'})
                 .done((response) => {
                     console.log(response);
@@ -38,14 +37,18 @@ function m_initUIBehaviours() {
                     isAccessing[list] = false;
                     $(list).toggleClass('object-delete');
                     $(list).toggleClass('object-delete-failed');
-
                 })
         }
 
     });
 
-    $('.create-list-or-ingredient-button').click((e) => {
+    $('.create-list-or-ingredient-button').click(() => {
         var modal = $('#modal-add');
+        modal.modal('show');
+    });
+
+    $('.open-modal-name').click(() => {
+        var modal = $('#modal-change-name');
         modal.modal('show');
     });
 }
