@@ -7832,12 +7832,26 @@ body {
 }
 
 .ingredient-check {
-  opacity: 0.3;
+  opacity: 0.8;
+  background-color: #8BC34A;
   -webkit-transition: 450ms;
   transition: 450ms;
 }
 
 .ingredient-uncheck {
+  opacity: 1.0;
+  background-color: white;
+  -webkit-transition: 450ms;
+  transition: 450ms;
+}
+
+.object-delete {
+  opacity: 0.3;
+  -webkit-transition: 450ms;
+  transition: 450ms;
+}
+
+.object-delete-failed {
   opacity: 1.0;
   -webkit-transition: 450ms;
   transition: 450ms;

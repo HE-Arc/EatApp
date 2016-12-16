@@ -7,9 +7,10 @@
 
             @forelse($listTab as $id => $info)
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div id="{{$info['slug']}}_heading" class="panel-heading object-delete-failed">
                         <h4 class="panel-title dark-color-hover">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#{{$info['slug']}}" class="button-justify">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#{{$info['slug']}}"
+                               class="button-justify">
                                 <span class="glyphicon glyphicon-list"></span>
                                 {{$info['name']}}</a>
                         </h4>
@@ -21,6 +22,15 @@
                             <a href="{{ url('/list/' . $id . '/user') }}" class="button-justify"><span
                                         class="glyphicon glyphicon-user"></span></a>
                         </div>
+                        {!! Form::open([
+                            'method' => 'DELETE',
+                            'route' => ['list.destroy', $id]
+                        ]) !!}
+                        <div class="edit-button pull-right dark-color-hover">
+                            <a id="{{$info['slug']}}_delete" href="#" class="button-justify delete-list-button"><span
+                                        class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                        {!! Form::close() !!}
                     </div>
 
                     <div id="{{$info['slug']}}" class="panel-collapse collapse" aria-expanded="false">
@@ -35,7 +45,8 @@
                                             </label>
                                         </td>
                                         <td class="ingredient-quantity">
-                                            <input disabled id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number" min="0" max="1000"
+                                            <input disabled id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number"
+                                                   min="0" max="1000"
                                                    class="full-width"
                                                    value="{{$ing['Quantity']}}"/>
                                         </td>
@@ -80,8 +91,8 @@
                         <a href="{{url('/list/create')}}" class="button-justify">
                             <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
+                </div>
             </div>
-
         </div>
     </div>
 

@@ -21,3 +21,11 @@ const app = new Vue({
 */
 
 require('./MainController');
+
+$(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});

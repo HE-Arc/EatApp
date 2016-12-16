@@ -152,10 +152,20 @@ body {
 }
 
 .ingredient-check {
-  opacity: 0.3;
+  opacity: 0.8;
+  background-color: $accent-color;
   transition: $button-shading-time;
 }
 .ingredient-uncheck {
+  opacity: 1.0;
+  background-color: white;
+  transition: $button-shading-time;
+}
+.object-delete {
+  opacity: 0.3;
+  transition: $button-shading-time;
+}
+.object-delete-failed {
   opacity: 1.0;
   transition: $button-shading-time;
 }

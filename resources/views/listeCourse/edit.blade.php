@@ -42,7 +42,6 @@ $titre = "Édition de " . $liste['name'];
                                     <td class="ingredient-delete">
                                         <!-- C'est vraiment dégueu ! -->
                                         <p style="display: none">
-
                                             {{$LI = \App\ListesIngredients::where('liste_id',$liste['id'])->where('ingredient_id',$ing['id'])->select('id')->get()}}
                                         </p>
                                         {!! Form::open([
