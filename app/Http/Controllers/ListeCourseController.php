@@ -140,6 +140,8 @@ class ListeCourseController extends Controller
         $liste = ListeCourse::findOrFail($id);
         $liste->delete();
 
-        return redirect()->route('home');
+        return response()->json(['isDone' => 'Done !', 'id' => $id]);
+
+//        return redirect()->route('home');
     }
 }

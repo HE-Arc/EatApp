@@ -6,8 +6,8 @@
         <div class="panel-group full-width" id="accordion">
 
             @forelse($listTab as $id => $info)
-                <div class="panel panel-default">
-                    <div id="{{$info['slug']}}_heading" class="panel-heading object-delete-failed">
+                <div id="{{$info['slug']}}_heading" class="panel panel-default object-delete-failed">
+                    <div class="panel-heading">
                         <h4 class="panel-title dark-color-hover">
                             <a data-toggle="collapse" data-parent="#accordion" href="#{{$info['slug']}}"
                                class="button-justify">

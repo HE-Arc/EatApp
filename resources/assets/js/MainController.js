@@ -29,20 +29,16 @@ function m_initUIBehaviours() {
             var url = $('#' + e.currentTarget.id).closest('form').attr('action');
             console.log(url);
             $.ajax(url, {type: 'delete'})
-                .done(() => {
-                    $(list).fadeOut();
+                .done((response) => {
+                    console.log(response);
+                    $(list).addClass('disappeared')
                 })
                 .fail((error) => {
-                    if (error.status !== 405) {
-                        //dunno why this error is thrown when it obviously works perfectly and data is actually erased
-                        isAccessing[list] = false;
-                        $(list).toggleClass('object-delete');
-                        $(list).toggleClass('object-delete-failed');
-                    }
-                    else {
-                        console.log("Kidding, the delete worked");
-                        $(list).fadeOut();
-                    }
+                    console.log(error);
+                    isAccessing[list] = false;
+                    $(list).toggleClass('object-delete');
+                    $(list).toggleClass('object-delete-failed');
+
                 })
         }
 
