@@ -35,7 +35,17 @@ class ListesIngredientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'liste_id' => 'required',
+            'ingredient_id' => 'required',
+            'Quantity' => 'required'
+        ]);
+
+        $liste = $request->all();
+
+        ListesIngredients::create($liste);
+
+        return redirect()->back();
     }
 
     /**

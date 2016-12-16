@@ -7857,12 +7857,6 @@ body {
   transition: 450ms;
 }
 
-.disappeared {
-  display: none;
-  -webkit-transition: 450ms;
-  transition: 450ms;
-}
-
 .panel-body {
   padding: 0;
 }

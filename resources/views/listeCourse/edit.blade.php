@@ -89,19 +89,37 @@ $titre = "Édition de " . $liste['name'];
     {!! Form::submit('Modifier la liste') !!}
     {!! Form::close() !!}
 
-
-    {!! Form::open([
-        'method' => 'DELETE',
-        'route' => ['list.destroy',$liste['id']]
-    ]) !!}
-
-    {!! Form::submit('Supprimer cette liste ?') !!}
-    {!! Form::close() !!}
-
-    {{--<form method="POST" action="{{ route("list.update", ["list" => $liste]) }}">--}}
-    {{--{{ csrf_field() }}--}}
-    {{--{{ method_field('PUT') }}--}}
-    {{--<input type="submit">--}}
-    {{--</form>--}}
+    <!-- MODALS -->
+    <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Add an ingredient</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="new-file-form">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="modal-new-file-name" class="form-control-label">File Name:</label>
+                                <input type="text" class="form-control" id="modal-new-file-name">
+                            </div>
+                            <button type="button" id="modal-new-file-save" class="btn btn-primary form-group pull-right"
+                                    data-dismiss="modal">
+                                Save changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p id="modal-new-file-error" class="modal-error">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

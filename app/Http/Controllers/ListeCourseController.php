@@ -59,10 +59,8 @@ class ListeCourseController extends Controller
 
         ListeCourse::create($liste);
 
-       // Session::flash('flash_message', 'Liste ajouté avec succès!');
-        return redirect()->back();
-        //return redirect()->route('home');
-
+//        return redirect()->back();
+        return redirect()->route('home');
     }
 
     /**

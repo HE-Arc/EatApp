@@ -31,7 +31,7 @@ function m_initUIBehaviours() {
             $.ajax(url, {type: 'delete'})
                 .done((response) => {
                     console.log(response);
-                    $(list).addClass('disappeared')
+                    $(list).addClass('hidden')
                 })
                 .fail((error) => {
                     console.log(error);
@@ -42,6 +42,11 @@ function m_initUIBehaviours() {
                 })
         }
 
+    });
+
+    $('.create-list-or-ingredient-button').click((e) => {
+        var modal = $('#modal-add');
+        modal.modal('show');
     });
 }
 

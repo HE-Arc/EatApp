@@ -170,11 +170,6 @@ body {
   transition: $button-shading-time;
 }
 
-.disappeared {
-  display: none;
-  transition: $button-shading-time;
-}
-
 .panel-body { padding:0; }
 .panel-body table tr td {
   padding: 5px 10px 5px 10px;
