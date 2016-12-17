@@ -12,6 +12,7 @@ class ListeCourse extends Model
 
     public function store(Request $request)
     {
+        dd($request);
         self::create($request->only('nom'));
     }
 

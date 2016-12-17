@@ -73,9 +73,57 @@ $titre = "Édition de " . $liste['name'];
         {{--<a href="{{ url('/home') }}">Go back to home</a>--}}
     {{--</div>--}}
 
-<!-- MODALS -->
+
+
+<div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Change name</h4>
+            </div>
+            <div class="modal-body">
+                {!! Form::model($liste,[
+            'method' => 'PATCH',
+            'route' => ['list.update',$liste['id']]
+            ]) !!}
+                <div class="form-group">
+                    {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
+                    {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+                </div>
+                {!! Form::submit('Apply new name',
+            array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+            @if(Session::has('flash_message'))
+                <div class="alert alert-success">
+                    {{ Session::get('flash_message') }}
+                </div>
+                @endif
+
+            @if($errors->any())
+                <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+        <!-- MODALS -->
 @section('modal-content')
-    <div>{!! Form::open(['route' => 'listsIngredients.store']) !!}
+    <div>
+        {!! Form::open(['route' => 'listsIngredients.store']) !!}
+        {{ csrf_field() }}
         <div class="form-group">
             {!! Form::label('Ingredient', 'Ingredient:', ['class' => 'control-label']) !!}
             <select id="Ingredient" name="Ingredient" class="form-control">
@@ -98,50 +146,4 @@ $titre = "Édition de " . $liste['name'];
         <button class="btn btn-primary form-group pull-right add-ing" id="{{$liste['id']}}_add-ing" data-dismiss="modal">Add ingredient</button>
         {!! Form::close() !!}
     </div>
-@endsection
-
-
-
-<div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">Change name</h4>
-            </div>
-            <div class="modal-body">
-                {!! Form::model($liste,[
-                   'method' => 'PATCH',
-                   'route' => ['list.update',$liste['id']]
-                ]) !!}
-                <div class="form-group">
-                    {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
-                    {!! Form::text('nom', null, ['class' => 'form-control']) !!}
-                </div>
-                {!! Form::submit('Apply new name',
-                        array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
-                {!! Form::close() !!}
-            </div>
-            <div class="modal-footer">
-                @if(Session::has('flash_message'))
-                    <div class="alert alert-success">
-                        {{ Session::get('flash_message') }}
-                    </div>
-                @endif
-
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection

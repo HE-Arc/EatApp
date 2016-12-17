@@ -10,12 +10,8 @@ class ListesIngredients extends Model
 
     public function store(Request $request)
     {
-        self::create([
-            $request->only('ingredient_id'),
-            $request->only('ingredient_id'),
-            $request->only('Quantity'),
-            $request->only('Unit')
-        ]);
+        dd($request);
+        self::create();
     }
 
 }

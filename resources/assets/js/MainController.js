@@ -53,10 +53,10 @@ function m_initUIBehaviours() {
         var url = m_getUrl(e);
 
         $.post(url, {
-            'liste_id': listId,
-            'ingredient_id': ingId,
-            'Quantity': quantity,
-            'Unit': unit})
+            "liste_id": listId,
+            "ingredient_id": ingId,
+            "Quantity": quantity,
+            "Unit": unit})
             .done((response) => {
                 console.log(response);
             })

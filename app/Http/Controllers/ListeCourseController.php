@@ -114,7 +114,7 @@ class ListeCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
+        dd($request->all());
         $liste = ListeCourse::findOrFail($id);
         $this->validate($request, [
             'nom' => 'required'

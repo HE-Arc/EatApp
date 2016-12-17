@@ -43,6 +43,14 @@ class ListesIngredientsController extends Controller
         ]);
 
         $liste = $request->all();
+        dd($request);
+
+        $liste = new ListesIngredients();
+        $liste->liste_id = $request->liste_id;
+        $liste->ingredient_id = $request->ingredient_id;
+        $liste->Quantity = $request->Quantity;
+        $liste->Unit = $request->Unit;
+        $liste->save();
 
 //        ListesIngredients::create($liste);
 
