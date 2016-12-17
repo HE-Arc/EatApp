@@ -37,7 +37,6 @@ class ListeCourseController extends Controller
      */
     public function create()
     {
-        //
         $titre = "Ajout d'une liste";
         return view('listeCourse.create', compact('titre'));
     }
@@ -50,7 +49,6 @@ class ListeCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         $this->validate($request, [
             'nom' => 'required'
         ]);
@@ -84,6 +82,7 @@ class ListeCourseController extends Controller
     public function edit($id)
     {
         $list = ListeCourse::find($id);
+        $allIng = Ingredient::all();
 
         $liste = [
             'ingredients' => [],
@@ -97,12 +96,11 @@ class ListeCourseController extends Controller
             $ingredient['slug'] = str_slug($ingredient['IngredientName']);
             $ingredient['Quantity'] = $attr->Quantity;
             $ingredient['id'] = $attr->ingredient_id;
+            $ingredient['assoc'] = $attr->id;
             $liste['ingredients'][$attr->ingredient_id] = $ingredient;
         }
 
-//        dd($liste);
-
-        return view('listeCourse.edit',compact('liste'));
+        return view('listeCourse.edit',compact('liste', 'allIng'));
     }
 
     /**
@@ -134,7 +132,6 @@ class ListeCourseController extends Controller
      */
     public function destroy($id)
     {
-        //
         $liste = ListeCourse::findOrFail($id);
         $liste->delete();
 

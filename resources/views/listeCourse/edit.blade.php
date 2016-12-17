@@ -2,7 +2,6 @@
 
 <?php
 $titre = "Édition de " . $liste['name'];
-
 ?>
 
 @section('childContent')
@@ -23,7 +22,7 @@ $titre = "Édition de " . $liste['name'];
                     <div class="panel-body">
                         <table class="table">
                             @foreach($liste['ingredients'] as $ing)
-                                <tr id="{{$ing['slug']}}_list" class="ingredient-uncheck">
+                                <tr id="{{$ing['slug']}}_heading" class="ingredient-uncheck">
                                     <td class="ingredient-description">
                                         <span class="glyphicon glyphicon-apple text-primary"></span>
                                         <label for="{{$ing['slug']}}_input">
@@ -40,20 +39,14 @@ $titre = "Édition de " . $liste['name'];
                                         {{$ing['MetricUnit']}}
                                     </td>
                                     <td class="ingredient-delete">
-                                        <!-- C'est vraiment dégueu ! -->
-                                        <p style="display: none">
-                                            {{$LI = \App\ListesIngredients::where('liste_id',$liste['id'])->where('ingredient_id',$ing['id'])->select('id')->get()}}
-                                        </p>
                                         {!! Form::open([
                                            'method' => 'DELETE',
-                                           'route' => ['listsIngredients.destroy',$LI[0]['id']]
+                                           'route' => ['listsIngredients.destroy', $ing['assoc']]
                                          ]) !!}
+                                        <a id="{{$ing['slug']}}_delete" href="#" class="button-justify delete-list-button"><span
+                                                    class="glyphicon glyphicon-trash"></span></a>
 
-                                        {!! Form::submit($LI[0]['id'], ['class' => 'glyphicon glyphicon-trash']) !!}
                                         {!! Form::close() !!}
-                                        <a href="#" id="{{$ing['slug']}}_check-button"
-                                           class="check-button"><span class="glyphicon glyphicon-trash"></span>
-                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -73,26 +66,30 @@ $titre = "Édition de " . $liste['name'];
         </div>
     </div>
 
-
     <div>
         <a href="{{ url('/home') }}">Go back to home</a>
     </div>
 
-    <!-- MODALS -->
+<!-- MODALS -->
 @section('modal-content')
     <div>{!! Form::open(['route' => 'listsIngredients.store']) !!}
         <div class="form-group">
             {!! Form::label('Ingredient', 'Ingredient:', ['class' => 'control-label']) !!}
-            {!! Form::select('Ingredient', ["Banana" => "BANANANA"], ['class' => 'form-control']) !!}
+            {!! Form::select('Ingredient', [1 => "BANANANA"], ['class' => 'form-control']) !!}
         </div>
-        <div class="form-group">
-            {!! Form::label('Quantity', 'Quantity:', ['class' => 'control-label']) !!}
-            {!! Form::text('Quantity', null, ['class' => 'form-control']) !!}
+        <div class="form-inline">
+            <div class="form-group">
+                {!! Form::label('Quantity', 'Quantity:', ['class' => 'control-label']) !!}
+                {!! Form::number('Quantity', null, ['class' => 'form-control']) !!}
+            </div>
+            <p id="ing-unit" class="form-group">GRAMS</p>
         </div>
-        {!! Form::submit('Add Ingredient',
-                array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
-        {!! Form::close() !!}</div>
+        <button class="btn btn-primary form-group pull-right add-ing" id="{{$liste['id']}}_add-ing" data-dismiss="modal">Add ingredient</button>
+        {!! Form::close() !!}
+    </div>
 @endsection
+
+
 
 <div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">

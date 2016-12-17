@@ -38,14 +38,15 @@ class ListesIngredientsController extends Controller
         $this->validate($request, [
             'liste_id' => 'required',
             'ingredient_id' => 'required',
-            'Quantity' => 'required'
+            'Quantity' => 'required',
+            'Unit' => 'required'
         ]);
 
         $liste = $request->all();
 
-        ListesIngredients::create($liste);
+//        ListesIngredients::create($liste);
 
-        return redirect()->back();
+        return response()->json(['isDone' => 'Done !', 'request' => $request]);
     }
 
     /**
@@ -90,10 +91,9 @@ class ListesIngredientsController extends Controller
      */
     public function destroy($id)
     {
-        //
         $ing = ListesIngredients::findOrFail($id);
         $ing->delete();
 
-        return redirect()->back();
+        return response()->json(['isDone' => 'Done !', 'id' => $id]);
     }
 }

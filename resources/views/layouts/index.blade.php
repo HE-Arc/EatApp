@@ -97,7 +97,7 @@
     </div>
 @endsection
 
-    <!-- MODALS -->
+<!-- MODALS -->
 @section('modal-content')
     <div>
         {!! Form::open(['route' => 'list.store']) !!}

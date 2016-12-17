@@ -26,7 +26,7 @@ function m_initUIBehaviours() {
             $(list).toggleClass('object-delete');
             $(list).toggleClass('object-delete-failed');
 
-            var url = $('#' + e.currentTarget.id).closest('form').attr('action');
+            var url = m_getUrl(e);
             $.ajax(url, {type: 'delete'})
                 .done((response) => {
                     console.log(response);
@@ -39,7 +39,27 @@ function m_initUIBehaviours() {
                     $(list).toggleClass('object-delete-failed');
                 })
         }
+    });
 
+    $('.add-ing').click((e) => {
+        var listId = m_getObject(e);
+        var ingId = parseFloat($('#Ingredient').val());
+        var quantity = parseFloat($('#Quantity').val());
+        var unit = $('#ing-unit').text();
+        console.log(unit);
+        var url = m_getUrl(e);
+
+        $.post(url, {
+            'liste_id': listId,
+            'ingredient_id': ingId,
+            'Quantity': quantity,
+            'Unit': unit})
+            .done((response) => {
+                console.log(response);
+            })
+            .fail((error) => {
+                console.log(error);
+            })
     });
 
     $('.create-list-or-ingredient-button').click(() => {
@@ -51,6 +71,10 @@ function m_initUIBehaviours() {
         var modal = $('#modal-change-name');
         modal.modal('show');
     });
+}
+
+function m_getUrl(e) {
+    return $('#' + e.currentTarget.id).closest('form').attr('action');
 }
 
 function m_getObject(e) {
