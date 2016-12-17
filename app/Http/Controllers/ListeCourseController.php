@@ -100,6 +100,8 @@ class ListeCourseController extends Controller
             $liste['ingredients'][$attr->ingredient_id] = $ingredient;
         }
 
+//        dd($allIng);
+
         return view('listeCourse.edit',compact('liste', 'allIng'));
     }
 

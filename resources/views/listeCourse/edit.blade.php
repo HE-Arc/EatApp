@@ -75,14 +75,22 @@ $titre = "Édition de " . $liste['name'];
     <div>{!! Form::open(['route' => 'listsIngredients.store']) !!}
         <div class="form-group">
             {!! Form::label('Ingredient', 'Ingredient:', ['class' => 'control-label']) !!}
-            {!! Form::select('Ingredient', [1 => "BANANANA"], ['class' => 'form-control']) !!}
+            <select id="Ingredient" name="Ingredient" class="form-control">
+                @foreach($allIng as $ing)
+                    <option value="{{$ing['id']}}">{{$ing['IngredientName']}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-inline">
             <div class="form-group">
                 {!! Form::label('Quantity', 'Quantity:', ['class' => 'control-label']) !!}
                 {!! Form::number('Quantity', null, ['class' => 'form-control']) !!}
             </div>
-            <p id="ing-unit" class="form-group">GRAMS</p>
+            <select disabled id="Unit" name="Unit" class="form-control">
+                @foreach($allIng as $ing)
+                    <option value="{{$ing['id']}}">{{$ing['MetricUnit']}}</option>
+                @endforeach
+            </select>
         </div>
         <button class="btn btn-primary form-group pull-right add-ing" id="{{$liste['id']}}_add-ing" data-dismiss="modal">Add ingredient</button>
         {!! Form::close() !!}

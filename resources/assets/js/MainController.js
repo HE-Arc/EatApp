@@ -18,6 +18,10 @@ function m_initUIBehaviours() {
         $(objectToTag).toggleClass('ingredient-check');
     });
 
+    $('#Ingredient').change(() => {
+        $('#Unit').val($('#Ingredient').val());
+    });
+
     $('.delete-list-button').click((e) => {
         var list = m_getObject(e) + '_heading';
 
