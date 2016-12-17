@@ -22,7 +22,7 @@ $titre = "Édition de " . $liste['name'];
                     <div class="panel-body">
                         <table class="table">
                             @foreach($liste['ingredients'] as $ing)
-                                <tr id="{{$ing['slug']}}_heading" class="ingredient-uncheck">
+                                <tr id="{{$ing['slug']}}_heading" class="ingredient-uncheck object-delete-failed">
                                     <td class="ingredient-description">
                                         <span class="glyphicon glyphicon-apple text-primary"></span>
                                         <label for="{{$ing['slug']}}_input">
@@ -65,10 +65,13 @@ $titre = "Édition de " . $liste['name'];
             </div>
         </div>
     </div>
-
     <div>
-        <a href="{{ url('/home') }}">Go back to home</a>
+        <a href="{{ url('/home') }}" class="back-btn pull-right">
+            <span class="glyphicon glyphicon-arrow-left">Back</span></a>
     </div>
+    {{--<div>--}}
+        {{--<a href="{{ url('/home') }}">Go back to home</a>--}}
+    {{--</div>--}}
 
 <!-- MODALS -->
 @section('modal-content')

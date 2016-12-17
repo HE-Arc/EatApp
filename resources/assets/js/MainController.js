@@ -47,10 +47,9 @@ function m_initUIBehaviours() {
 
     $('.add-ing').click((e) => {
         var listId = m_getObject(e);
-        var ingId = parseFloat($('#Ingredient').val());
+        var ingId = $('#Ingredient').val();
         var quantity = parseFloat($('#Quantity').val());
-        var unit = $('#ing-unit').text();
-        console.log(unit);
+        var unit = $('#Unit').find('option:selected').text();
         var url = m_getUrl(e);
 
         $.post(url, {

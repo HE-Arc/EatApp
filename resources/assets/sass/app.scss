@@ -133,6 +133,19 @@ body {
   text-decoration: none;
   padding: 10px 10px 10px 10px;
 }
+.back-btn, .back-btn:link, .back-btn:visited{
+  color: black;
+  height: 100%;
+  display: inline-block;
+  background-color: inherit;
+  text-decoration: none;
+  padding: 10px 10px 10px 10px;
+  transition: $button-shading-time;
+}
+.back-btn:hover {
+  background-color: $accent-color;
+  transition: $button-shading-time;
+}
 
 .ingredient-description {
   width: 70%;
