@@ -2,7 +2,6 @@
 
 <?php
 $titre = "Édition de " . $liste['name'];
-
 ?>
 
 @section('childContent')
@@ -12,7 +11,7 @@ $titre = "Édition de " . $liste['name'];
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title dark-color-hover">
-                        <a data-parent="#accordion" class="button-justify">
+                        <a data-parent="#accordion" class="button-justify open-modal-name">
                             <span class="glyphicon glyphicon-list"></span>
                             {{$liste['name']}}
                         </a>
@@ -21,9 +20,9 @@ $titre = "Édition de " . $liste['name'];
 
                 <div class="panel-collapse" aria-expanded="true">
                     <div class="panel-body">
-                        <table class="table">
+                        <table id="table" class="table">
                             @foreach($liste['ingredients'] as $ing)
-                                <tr id="{{$ing['slug']}}_list" class="ingredient-uncheck">
+                                <tr id="{{$ing['slug']}}_heading" class="ingredient-uncheck object-delete-failed">
                                     <td class="ingredient-description">
                                         <span class="glyphicon glyphicon-apple text-primary"></span>
                                         <label for="{{$ing['slug']}}_input">
@@ -40,9 +39,14 @@ $titre = "Édition de " . $liste['name'];
                                         {{$ing['MetricUnit']}}
                                     </td>
                                     <td class="ingredient-delete">
-                                        <a href="#" id="{{$ing['slug']}}_check-button"
-                                           class="check-button"><span class="glyphicon glyphicon-trash"></span>
-                                        </a>
+                                        {!! Form::open([
+                                           'method' => 'DELETE',
+                                           'route' => ['listsIngredients.destroy', $ing['assoc']]
+                                         ]) !!}
+                                        <a id="{{$ing['slug']}}_delete" href="#" class="button-justify delete-list-button"><span
+                                                    class="glyphicon glyphicon-trash"></span></a>
+
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,36 +65,88 @@ $titre = "Édition de " . $liste['name'];
             </div>
         </div>
     </div>
-
-
     <div>
-        <a href="{{ url('/home') }}">Go back to home</a>
+        <a href="{{ url('/home') }}" class="back-btn pull-right">
+            <span class="glyphicon glyphicon-arrow-left">Back</span></a>
     </div>
+    {{--<div>--}}
+        {{--<a href="{{ url('/home') }}">Go back to home</a>--}}
+    {{--</div>--}}
 
-    {!! Form::model($liste,[
-       'method' => 'PATCH',
-       'route' => ['list.update',$liste['id']]
-    ]) !!}
-    <div class="form-group">
-        {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
-        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+
+
+<div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Change name</h4>
+            </div>
+            <div class="modal-body">
+                {!! Form::model($liste,[
+            'method' => 'PATCH',
+            'route' => ['list.update',$liste['id']]
+            ]) !!}
+                <div class="form-group">
+                    {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
+                    {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+                </div>
+                {!! Form::submit('Apply new name',
+            array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+            @if(Session::has('flash_message'))
+                <div class="alert alert-success">
+                    {{ Session::get('flash_message') }}
+                </div>
+                @endif
+
+            @if($errors->any())
+                <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+                @endif
+            </div>
+        </div>
     </div>
-    {!! Form::submit('Modifier la liste') !!}
-    {!! Form::close() !!}
+</div>
 
+@endsection
 
-    {!! Form::open([
-        'method' => 'DELETE',
-        'route' => ['list.destroy',$liste['id']]
-    ]) !!}
-
-    {!! Form::submit('Supprimer cette liste ?') !!}
-    {!! Form::close() !!}
-
-    {{--<form method="POST" action="{{ route("list.update", ["list" => $liste]) }}">--}}
-    {{--{{ csrf_field() }}--}}
-    {{--{{ method_field('PUT') }}--}}
-    {{--<input type="submit">--}}
-    {{--</form>--}}
-
+        <!-- MODALS -->
+@section('modal-content')
+    <div>
+        {!! Form::open([
+        'method' => 'POST',
+        'route' => 'listsIngredients.store'
+        ]) !!}
+        {{ csrf_field() }}
+        <div class="form-group">
+            {!! Form::label('Ingredient', 'Ingredient:', ['class' => 'control-label']) !!}
+            <select id="Ingredient" name="Ingredient" class="form-control">
+                @foreach($allIng as $ing)
+                    <option value="{{$ing['id']}}">{{$ing['IngredientName']}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                {!! Form::label('Quantity', 'Quantity:', ['class' => 'control-label']) !!}
+                {!! Form::number('Quantity', null, ['class' => 'form-control']) !!}
+            </div>
+            <select disabled id="Unit" name="Unit" class="form-control">
+                @foreach($allIng as $ing)
+                    <option value="{{$ing['id']}}">{{$ing['MetricUnit']}}</option>
+                @endforeach
+            </select>
+        </div>
+        <button class="btn btn-primary form-group pull-right add-ing" id="{{$liste['id']}}_add-ing" data-dismiss="modal">Add ingredient</button>
+        {!! Form::close() !!}
+    </div>
 @endsection

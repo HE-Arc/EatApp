@@ -6,10 +6,11 @@
         <div class="panel-group full-width" id="accordion">
 
             @forelse($listTab as $id => $info)
-                <div class="panel panel-default">
+                <div id="{{$info['slug']}}_heading" class="panel panel-default object-delete-failed">
                     <div class="panel-heading">
                         <h4 class="panel-title dark-color-hover">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#{{$info['slug']}}" class="button-justify">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#{{$info['slug']}}"
+                               class="button-justify">
                                 <span class="glyphicon glyphicon-list"></span>
                                 {{$info['name']}}</a>
                         </h4>
@@ -21,6 +22,15 @@
                             <a href="{{ url('/list/' . $id . '/user') }}" class="button-justify"><span
                                         class="glyphicon glyphicon-user"></span></a>
                         </div>
+                        {!! Form::open([
+                            'method' => 'DELETE',
+                            'route' => ['list.destroy', $id]
+                        ]) !!}
+                        <div class="edit-button pull-right dark-color-hover">
+                            <a id="{{$info['slug']}}_delete" href="#" class="button-justify delete-list-button"><span
+                                        class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                        {!! Form::close() !!}
                     </div>
 
                     <div id="{{$info['slug']}}" class="panel-collapse collapse" aria-expanded="false">
@@ -35,7 +45,8 @@
                                             </label>
                                         </td>
                                         <td class="ingredient-quantity">
-                                            <input disabled id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number" min="0" max="1000"
+                                            <input disabled id="{{$info['slug']}}-{{$ing['slug']}}_input" type="number"
+                                                   min="0" max="1000"
                                                    class="full-width"
                                                    value="{{$ing['Quantity']}}"/>
                                         </td>
@@ -77,12 +88,25 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title create-list-or-ingredient-button">
-                        <a href="{{url('/list/create')}}" class="button-justify">
+                        <a href="#" class="button-justify">
                             <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
+                </div>
             </div>
-
         </div>
     </div>
+@endsection
 
+<!-- MODALS -->
+@section('modal-content')
+    <div>
+        {!! Form::open(['route' => 'list.store']) !!}
+        <div>
+            {!! Form::label('nom', 'Nom de la liste:') !!}
+            {!! Form::text('nom', null) !!}
+        </div>
+        {!! Form::submit('Créer une nouvelle liste',
+            array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
+        {!! Form::close() !!}
+    </div>
 @endsection

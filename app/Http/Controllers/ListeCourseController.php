@@ -37,7 +37,6 @@ class ListeCourseController extends Controller
      */
     public function create()
     {
-        //
         $titre = "Ajout d'une liste";
         return view('listeCourse.create', compact('titre'));
     }
@@ -50,19 +49,11 @@ class ListeCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         $this->validate($request, [
             'nom' => 'required'
         ]);
-
-        $liste = $request->all();
-
-        ListeCourse::create($liste);
-
-        Session::flash('flash_message', 'Liste ajouté avec succès!');
-        return redirect()->back();
-        //return redirect()->route('home');
-
+        ListeCourse::create($request->only('nom'));
+        return redirect()->route('home');
     }
 
     /**
@@ -86,6 +77,7 @@ class ListeCourseController extends Controller
     public function edit($id)
     {
         $list = ListeCourse::find($id);
+        $allIng = Ingredient::all();
 
         $liste = [
             'ingredients' => [],
@@ -98,13 +90,14 @@ class ListeCourseController extends Controller
             $ingredient = Ingredient::find($attr->ingredient_id)['attributes'];
             $ingredient['slug'] = str_slug($ingredient['IngredientName']);
             $ingredient['Quantity'] = $attr->Quantity;
-
+            $ingredient['id'] = $attr->ingredient_id;
+            $ingredient['assoc'] = $attr->id;
             $liste['ingredients'][$attr->ingredient_id] = $ingredient;
         }
 
-//        dd($liste);
+//        dd($allIng);
 
-        return view('listeCourse.edit',compact('liste'));
+        return view('listeCourse.edit',compact('liste', 'allIng'));
     }
 
     /**
@@ -116,7 +109,7 @@ class ListeCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
+//        dd($request->all());
         $liste = ListeCourse::findOrFail($id);
         $this->validate($request, [
             'nom' => 'required'
@@ -136,10 +129,11 @@ class ListeCourseController extends Controller
      */
     public function destroy($id)
     {
-        //
         $liste = ListeCourse::findOrFail($id);
         $liste->delete();
 
-        return redirect()->route('home');
+        return response()->json(compact('id'));
+
+//        return redirect()->route('home');
     }
 }

@@ -10,9 +10,9 @@ class ListeCourse extends Model
     protected $table = 'liste_courses';
     protected $fillable = ['nom'];
 
-    public function store(Request $request)
+    public function store(array $data)
     {
-        self::create($request->only('nom'));
+        self::create($data);
     }
 
     public function updateListeCourse($id,$nom)
@@ -25,7 +25,8 @@ class ListeCourse extends Model
     public function ingredients()
     {
         return $this->belongsToMany('App\Ingredient', 'assoc_liste_ingredients', 'liste_id', 'ingredient_id')
-            ->withPivot('Quantity');
+            ->withPivot('Quantity')
+            ->withPivot('id');
     }
 
 }

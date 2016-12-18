@@ -16,7 +16,11 @@ Route::get('/', function() {
 });
 Route::get('/home', 'HomeController@home')->name('home');
 
+/* Pour l'instant, toutes les routes par défaut */
 Route::resource('list', 'ListeCourseController');
+Route::resource('ingredients','IngredientController');
+Route::resource('listsIngredients','ListesIngredientsController');
+Route::resource('listsUsers','ListesUsersController');
 
 Route::get('/list/{list}/user', 'ListeCourseController@user')->name('list.user.index');
 
