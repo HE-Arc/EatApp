@@ -34,6 +34,7 @@ $titre = "Édition de " . $liste['name'];
                                                min="0" max="1000"
                                                class="full-width"
                                                value="{{$ing['Quantity']}}"/>
+                                        <span id="{{$ing['slug']}}_delete-error" class="connection-error"></span>
                                     </td>
                                     <td class="ingredient-unit">
                                         {{$ing['MetricUnit']}}
@@ -43,7 +44,8 @@ $titre = "Édition de " . $liste['name'];
                                            'method' => 'DELETE',
                                            'route' => ['listsIngredients.destroy', $ing['assoc']]
                                          ]) !!}
-                                        <a id="{{$ing['slug']}}_delete" href="#" class="button-justify delete-list-button"><span
+                                        <a id="{{$ing['slug']}}_delete" href="#"
+                                           class="button-justify delete-list-button"><span
                                                     class="glyphicon glyphicon-trash"></span></a>
 
                                         {!! Form::close() !!}
@@ -69,57 +71,52 @@ $titre = "Édition de " . $liste['name'];
         <a href="{{ url('/home') }}" class="back-btn pull-right">
             <span class="glyphicon glyphicon-arrow-left">Back</span></a>
     </div>
-    {{--<div>--}}
-        {{--<a href="{{ url('/home') }}">Go back to home</a>--}}
-    {{--</div>--}}
 
-
-
-<div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">Change name</h4>
-            </div>
-            <div class="modal-body">
-                {!! Form::model($liste,[
-            'method' => 'PATCH',
-            'route' => ['list.update',$liste['id']]
-            ]) !!}
-                <div class="form-group">
-                    {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
-                    {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+    <div class="modal fade" id="modal-change-name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Change name</h4>
                 </div>
-                {!! Form::submit('Apply new name',
-            array('class' => 'btn btn-primary form-group pull-right'/*, 'data-dismiss' => 'modal'*/)) !!}
-                {!! Form::close() !!}
-            </div>
-            <div class="modal-footer">
-            @if(Session::has('flash_message'))
-                <div class="alert alert-success">
-                    {{ Session::get('flash_message') }}
+                <div class="modal-body">
+                    {!! Form::model($liste,[
+                'method' => 'PATCH',
+                'route' => ['list.update',$liste['id']]
+                ]) !!}
+                    <div class="form-group">
+                        {!! Form::label('nom', 'Nom:', ['class' => 'control-label']) !!}
+                        {!! Form::text('nom', null, ['class' => 'form-control']) !!}
+                    </div>
+                    {!! Form::submit('Apply new name',
+                array('class' => 'btn btn-primary form-group pull-right')) !!}
+                    {!! Form::close() !!}
                 </div>
-                @endif
+                <div class="modal-footer">
+                    @if(Session::has('flash_message'))
+                        <div class="alert alert-success">
+                            {{ Session::get('flash_message') }}
+                        </div>
+                    @endif
 
-            @if($errors->any())
-                <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                    @endforeach
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
-                @endif
             </div>
         </div>
     </div>
-</div>
 
-@endsection
+    @endsection
 
-        <!-- MODALS -->
+            <!-- MODALS -->
 @section('modal-content')
     <div>
         {!! Form::open([
@@ -145,8 +142,11 @@ aria-hidden="true">
                     <option value="{{$ing['id']}}">{{$ing['MetricUnit']}}</option>
                 @endforeach
             </select>
+            <span id="modal-alert" class="connection-error"></span>
         </div>
-        <button class="btn btn-primary form-group pull-right add-ing" id="{{$liste['id']}}_add-ing" data-dismiss="modal">Add ingredient</button>
+        <button class="btn btn-primary form-group pull-right add-ing" id="{{$liste['id']}}_add-ing"
+                data-dismiss="modal">Add ingredient
+        </button>
         {!! Form::close() !!}
     </div>
 @endsection

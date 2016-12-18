@@ -22,7 +22,9 @@ function m_initUIBehaviours() {
     });
 
     $('.delete-list-button').click((e) => {
-        var list = '#' + m_getObject(e) + '_heading';
+        var ing = '#' + m_getObject(e);
+        var list = ing + '_heading';
+        var error = ing + '_delete-error';
 
         if (!isAccessing[list]) {
             isAccessing[list] = true;
@@ -33,13 +35,14 @@ function m_initUIBehaviours() {
             $.ajax(url, {type: 'delete'})
                 .done((response) => {
                     console.log(response);
-                    $(list).addClass('hidden')
+                    $(list).addClass('hidden');
                 })
                 .fail((error) => {
                     console.log(error);
                     isAccessing[list] = false;
                     $(list).toggleClass('object-delete');
                     $(list).toggleClass('object-delete-failed');
+                    $(error).append("Can't connect to server.");
                 })
         }
     });
@@ -51,29 +54,44 @@ function m_initUIBehaviours() {
         var unit = $('#Unit').find('option:selected').text();
         var url = m_getUrl(e);
 
-        $.post(url, {
-            "liste_id": listId,
-            "ingredient_id": ingId,
-            "Quantity": quantity,
-            "Unit": unit})
-            .done((response) => {
-                var ingName = $('#Ingredient').find('option:selected').text();
-                var slug = m_slugify(ingName) + '_heading';
-                var html = $(response).find('#' + slug)[0].outerHTML;
-                $('#table').append(html);
-            })
-            .fail((error) => {
-                console.log(error);
-            })
+        if(isNaN(quantity)) {
+            $('#modal-alert').append("Please fill all fields.");
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        else {
+            $.post(url, {
+                    "liste_id": listId,
+                    "ingredient_id": ingId,
+                    "Quantity": quantity,
+                    "Unit": unit})
+                .done((response) => {
+                    var ingName = $('#Ingredient').find('option:selected').text();
+                    var slug = m_slugify(ingName) + '_heading';
+                    var html = $(response).find('#' + slug)[0].outerHTML;
+                    $('#table').append(html);
+                    var modal = $('#modal-add');
+                    modal.modal('hide');
+                })
+                .fail((error) => {
+                    console.log(error);
+                    $('.alert-danger').append("Can't connect to server.");
+                })
+        }
     });
 
     $('.create-list-or-ingredient-button').click(() => {
         var modal = $('#modal-add');
+        $('.alert-danger').empty();
+        $('.alert-success').empty();
+        $('#modal-alert').empty();
         modal.modal('show');
     });
 
     $('.open-modal-name').click(() => {
         var modal = $('#modal-change-name');
+        $('.alert-danger').empty();
+        $('.alert-success').empty();
         modal.modal('show');
     });
 }
