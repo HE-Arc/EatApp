@@ -61,11 +61,9 @@ function m_initUIBehaviours() {
             "Quantity": quantity,
             "Unit": unit})
             .done((response) => {
-                console.log("CHATTE");
                 console.log(response);
             })
             .fail((error) => {
-                console.log("BITE");
                 console.log(error);
             })
     });
