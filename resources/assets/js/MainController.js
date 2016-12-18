@@ -13,7 +13,6 @@ $(function () {
 function m_initUIBehaviours() {
     $('.check-button').click((e) => {
         var objectToTag = m_getObject(e) + '_list';
-        console.log(objectToTag);
         $(objectToTag).toggleClass('ingredient-uncheck');
         $(objectToTag).toggleClass('ingredient-check');
     });
@@ -58,8 +57,6 @@ function m_initUIBehaviours() {
             "Quantity": quantity,
             "Unit": unit})
             .done((response) => {
-                //console.log(response);
-                //var html = $.parseHTML(response);
                 var ingName = $('#Ingredient').find('option:selected').text();
                 var slug = m_slugify(ingName) + '_heading';
                 var html = $(response).find('#' + slug)[0].outerHTML;
@@ -96,8 +93,4 @@ function m_slugify(text) {
         .replace(/\-\-+/g, '-')         // Replace multiple - with single -
         .replace(/^-+/, '')             // Trim - from start of text
         .replace(/-+$/, '');            // Trim - from end of text
-}
-
-function m_generateIngredient(listId, slug) {
-
 }
