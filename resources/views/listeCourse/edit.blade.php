@@ -20,7 +20,7 @@ $titre = "Édition de " . $liste['name'];
 
                 <div class="panel-collapse" aria-expanded="true">
                     <div class="panel-body">
-                        <table class="table">
+                        <table id="table" class="table">
                             @foreach($liste['ingredients'] as $ing)
                                 <tr id="{{$ing['slug']}}_heading" class="ingredient-uncheck object-delete-failed">
                                     <td class="ingredient-description">

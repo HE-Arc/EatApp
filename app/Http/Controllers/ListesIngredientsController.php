@@ -44,7 +44,8 @@ class ListesIngredientsController extends Controller
 
         ListesIngredients::create($request->only('liste_id', 'ingredient_id', 'Quantity', 'Unit'));
 
-        return response()->json(compact('request'));
+//        return response()->json(redirect()->back());
+        return redirect()->back();
     }
 
     /**

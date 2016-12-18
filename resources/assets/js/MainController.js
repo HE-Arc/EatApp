@@ -31,7 +31,6 @@ function m_initUIBehaviours() {
             $(list).toggleClass('object-delete-failed');
 
             var url = m_getUrl(e);
-            console.log(url);
             $.ajax(url, {type: 'delete'})
                 .done((response) => {
                     console.log(response);
@@ -47,13 +46,11 @@ function m_initUIBehaviours() {
     });
 
     $('.add-ing').click((e) => {
-        console.log(e.currentTarget.id);
         var listId = m_getObject(e);
         var ingId = $('#Ingredient').val();
         var quantity = parseFloat($('#Quantity').val());
         var unit = $('#Unit').find('option:selected').text();
         var url = m_getUrl(e);
-        console.log(listId, ingId, quantity, unit, url);
 
         $.post(url, {
             "liste_id": listId,
@@ -61,7 +58,12 @@ function m_initUIBehaviours() {
             "Quantity": quantity,
             "Unit": unit})
             .done((response) => {
-                console.log(response);
+                //console.log(response);
+                //var html = $.parseHTML(response);
+                var ingName = $('#Ingredient').find('option:selected').text();
+                var slug = m_slugify(ingName) + '_heading';
+                var html = $(response).find('#' + slug)[0].outerHTML;
+                $('#table').append(html);
             })
             .fail((error) => {
                 console.log(error);
@@ -85,4 +87,17 @@ function m_getUrl(e) {
 
 function m_getObject(e) {
     return e.currentTarget.id.split("_")[0];
+}
+
+function m_slugify(text) {
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+}
+
+function m_generateIngredient(listId, slug) {
+
 }
