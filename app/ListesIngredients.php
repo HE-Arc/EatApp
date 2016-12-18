@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class ListesIngredients extends Model
 {
     protected $table = 'assoc_liste_ingredients';
+    protected $fillable = ['liste_id', 'ingredient_id', 'Quantity', 'Unit'];
 
-    public function store(Request $request)
+    public function store(array $data)
     {
-        dd($request);
-        self::create();
+        self::create($data);
     }
 
 }

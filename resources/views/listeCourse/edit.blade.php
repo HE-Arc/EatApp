@@ -122,7 +122,10 @@ aria-hidden="true">
         <!-- MODALS -->
 @section('modal-content')
     <div>
-        {!! Form::open(['route' => 'listsIngredients.store']) !!}
+        {!! Form::open([
+        'method' => 'POST',
+        'route' => 'listsIngredients.store'
+        ]) !!}
         {{ csrf_field() }}
         <div class="form-group">
             {!! Form::label('Ingredient', 'Ingredient:', ['class' => 'control-label']) !!}

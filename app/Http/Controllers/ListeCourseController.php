@@ -52,12 +52,7 @@ class ListeCourseController extends Controller
         $this->validate($request, [
             'nom' => 'required'
         ]);
-
-        $liste = $request->all();
-
-        ListeCourse::create($liste);
-
-//        return redirect()->back();
+        ListeCourse::create($request->only('nom'));
         return redirect()->route('home');
     }
 
@@ -114,7 +109,7 @@ class ListeCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+//        dd($request->all());
         $liste = ListeCourse::findOrFail($id);
         $this->validate($request, [
             'nom' => 'required'
@@ -137,7 +132,7 @@ class ListeCourseController extends Controller
         $liste = ListeCourse::findOrFail($id);
         $liste->delete();
 
-        return response()->json(['isDone' => 'Done !', 'id' => $id]);
+        return response()->json(compact('id'));
 
 //        return redirect()->route('home');
     }

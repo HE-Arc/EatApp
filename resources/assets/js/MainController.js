@@ -23,7 +23,7 @@ function m_initUIBehaviours() {
     });
 
     $('.delete-list-button').click((e) => {
-        var list = m_getObject(e) + '_heading';
+        var list = '#' + m_getObject(e) + '_heading';
 
         if (!isAccessing[list]) {
             isAccessing[list] = true;
@@ -31,6 +31,7 @@ function m_initUIBehaviours() {
             $(list).toggleClass('object-delete-failed');
 
             var url = m_getUrl(e);
+            console.log(url);
             $.ajax(url, {type: 'delete'})
                 .done((response) => {
                     console.log(response);
@@ -46,11 +47,13 @@ function m_initUIBehaviours() {
     });
 
     $('.add-ing').click((e) => {
+        console.log(e.currentTarget.id);
         var listId = m_getObject(e);
         var ingId = $('#Ingredient').val();
         var quantity = parseFloat($('#Quantity').val());
         var unit = $('#Unit').find('option:selected').text();
         var url = m_getUrl(e);
+        console.log(listId, ingId, quantity, unit, url);
 
         $.post(url, {
             "liste_id": listId,
@@ -58,9 +61,11 @@ function m_initUIBehaviours() {
             "Quantity": quantity,
             "Unit": unit})
             .done((response) => {
+                console.log("CHATTE");
                 console.log(response);
             })
             .fail((error) => {
+                console.log("BITE");
                 console.log(error);
             })
     });
@@ -81,5 +86,5 @@ function m_getUrl(e) {
 }
 
 function m_getObject(e) {
-    return '#' + e.currentTarget.id.split("_")[0];
+    return e.currentTarget.id.split("_")[0];
 }

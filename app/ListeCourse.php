@@ -10,10 +10,9 @@ class ListeCourse extends Model
     protected $table = 'liste_courses';
     protected $fillable = ['nom'];
 
-    public function store(Request $request)
+    public function store(array $data)
     {
-        dd($request);
-        self::create($request->only('nom'));
+        self::create($data);
     }
 
     public function updateListeCourse($id,$nom)

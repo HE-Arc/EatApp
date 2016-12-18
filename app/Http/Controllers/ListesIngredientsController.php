@@ -42,19 +42,9 @@ class ListesIngredientsController extends Controller
             'Unit' => 'required'
         ]);
 
-        $liste = $request->all();
-        dd($request);
+        ListesIngredients::create($request->only('liste_id', 'ingredient_id', 'Quantity', 'Unit'));
 
-        $liste = new ListesIngredients();
-        $liste->liste_id = $request->liste_id;
-        $liste->ingredient_id = $request->ingredient_id;
-        $liste->Quantity = $request->Quantity;
-        $liste->Unit = $request->Unit;
-        $liste->save();
-
-//        ListesIngredients::create($liste);
-
-        return response()->json(['isDone' => 'Done !', 'request' => $request]);
+        return response()->json(compact('request'));
     }
 
     /**
@@ -102,6 +92,6 @@ class ListesIngredientsController extends Controller
         $ing = ListesIngredients::findOrFail($id);
         $ing->delete();
 
-        return response()->json(['isDone' => 'Done !', 'id' => $id]);
+        return response()->json(compact('id'));
     }
 }
