@@ -188,6 +188,28 @@ body {
   transition: $button-shading-time;
 }
 
+.recipe-container {
+  display: flex;
+}
+.recipe-container > div {
+  width: 50%;
+  padding: 10px;
+}
+.recipe-container:first-child {
+  margin-right: 20px;
+}
+
+.recipe-link:hover {
+  opacity: 0.5;
+}
+.recipe-image {
+  width: 100%;
+  height: 100%;
+}
+.recipe-info {
+
+}
+
 .panel-body { padding:0; }
 .panel-body table tr td {
   padding: 5px 10px 5px 10px;

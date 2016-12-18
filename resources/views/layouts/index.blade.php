@@ -27,7 +27,7 @@
                             'route' => ['list.destroy', $id]
                         ]) !!}
                         <div class="edit-button pull-right dark-color-hover">
-                            <a id="{{$info['slug']}}_delete" href="#" class="button-justify delete-list-button"><span
+                            <a id="{{$info['slug']}}_delete" href="javascript:;" class="button-justify delete-list-button"><span
                                         class="glyphicon glyphicon-trash"></span></a>
                         </div>
                         {!! Form::close() !!}
@@ -54,7 +54,7 @@
                                             {{$ing['MetricUnit']}}
                                         </td>
                                         <td class="ingredient-delete">
-                                            <a href="#" id="{{$info['slug']}}-{{$ing['slug']}}_check-button"
+                                            <a href="javascript:;" id="{{$info['slug']}}-{{$ing['slug']}}_check-button"
                                                class="check-button"><span class="glyphicon glyphicon-ok"></span>
                                             </a>
                                         </td>
@@ -88,7 +88,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title create-list-or-ingredient-button">
-                        <a href="#" class="button-justify">
+                        <a href="javascript:;" class="button-justify">
                             <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
                 </div>

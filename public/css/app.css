@@ -7880,6 +7880,29 @@ body {
   transition: 450ms;
 }
 
+.recipe-container {
+  display: -webkit-box;
+  display: flex;
+}
+
+.recipe-container > div {
+  width: 50%;
+  padding: 10px;
+}
+
+.recipe-container:first-child {
+  margin-right: 20px;
+}
+
+.recipe-link:hover {
+  opacity: 0.5;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 100%;
+}
+
 .panel-body {
   padding: 0;
 }

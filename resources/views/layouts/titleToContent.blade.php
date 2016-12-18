@@ -4,7 +4,7 @@
     <div id="custom-search-input" class="input-group col-md-12">
         <input id="input-search-recipes" type="text" class="search-query form-control" placeholder="Search Recipes" />
         <span class="input-group-btn">
-            <button class="btn search-btn" type="button">
+            <button id="search-button" class="btn search-btn" type="button">
                 <span class=" glyphicon glyphicon-search"></span>
             </button>
         </span>
@@ -17,6 +17,7 @@
             {{ $titre }}
         </div>
     </div>
+
     @yield('childContent')
 
     <!-- MODALS -->
@@ -47,6 +48,32 @@
                             @endforeach
                         </div>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-research-results" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Results</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="empty-on-result">Wait for it...</p>
+                    <div id="results" class="empty-on-result">
+
+                    </div>
+                    <button class="btn btn-primary form-group pull-right" id="end-search"
+                            data-dismiss="modal">Close
+                    </button>
+                </div>
+                <div class="modal-footer">
+
                 </div>
             </div>
         </div>
