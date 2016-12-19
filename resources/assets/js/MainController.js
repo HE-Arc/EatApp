@@ -12,9 +12,9 @@ $(function () {
 
 function m_initUIBehaviours() {
     $('.check-button').click((e) => {
-        var objectToTag = m_getObject(e) + '_list';
+        var objectToTag = '#' + m_getObject(e) + '_list';
         $(objectToTag).toggleClass('ingredient-uncheck');
-        $(objectToTag).toggleClass('ingredient-check');
+        $(objectToTag).toggleClass('ingredient-bought');
     });
 
     $('#search-button').click(() => {

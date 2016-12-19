@@ -169,6 +169,10 @@ body {
   background-color: $accent-color;
   transition: $button-shading-time;
 }
+.ingredient-bought {
+  opacity: 0.3;
+  transition: $button-shading-time;
+}
 .ingredient-uncheck {
   opacity: 1.0;
   background-color: white;

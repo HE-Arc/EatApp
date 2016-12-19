@@ -7855,6 +7855,12 @@ body {
   transition: 450ms;
 }
 
+.ingredient-bought {
+  opacity: 0.3;
+  -webkit-transition: 450ms;
+  transition: 450ms;
+}
+
 .ingredient-uncheck {
   opacity: 1.0;
   background-color: white;
