@@ -22,7 +22,7 @@ $titre = "Édition de " . $liste['name'];
                     <div class="panel-body">
                         <table id="table" class="table">
                             @foreach($liste['ingredients'] as $ing)
-                                <tr id="{{$ing['slug']}}_heading" class="ingredient-uncheck object-delete-failed">
+                                <tr id="{{$ing['slug']}}_heading" class="object-delete-failed">
                                     <td class="ingredient-description">
                                         <span class="glyphicon glyphicon-apple text-primary"></span>
                                         <label for="{{$ing['slug']}}_input">
